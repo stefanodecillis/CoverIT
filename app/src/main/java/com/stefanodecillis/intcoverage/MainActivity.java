@@ -33,6 +33,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Wrong modifier!!! private should be used here!
+
     //objectUI
     protected FloatingActionButton findBtn = null;
     protected AutoCompleteTextView autocomplete = null;
@@ -40,22 +42,24 @@ public class MainActivity extends AppCompatActivity {
     protected AutoCompleteTextView autocompleteAddr = null;
     protected AutoCompleteTextView autocompleteNum = null;
 
-
+    //Whose shan't be here!
     String findCountry = "";
     String findCity = "";
     String findAddr = "";
     String findNumHouse = "";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUI();
+
+        //!!!!!!!
         Tools.trueSearch = false;
+
         callApi();
 
+        //Initialize adapters outside onCreate please!! Bad quality code.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_dropdown_item_1line,
@@ -181,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //ButterKnife should be used instead.
     void initUI(){
         findBtn = (FloatingActionButton) findViewById(R.id.findBtn);
         autocomplete = (AutoCompleteTextView) findViewById(R.id.autocomplete);
@@ -189,11 +194,24 @@ public class MainActivity extends AppCompatActivity {
         autocompleteNum = (AutoCompleteTextView) findViewById(R.id.autocompleteNum);
     }
 
+    /*
+    *
+    * POOR quality code!
+    *
+    * Multiple callApi method with the same structure!
+    *
+    * */
+
     void callApi(){
         // Instantiate the RequestQueue.
+
+        /* Terrible! Multiple RequestQueue created! This should be handled in a Singleton instead! */
+        //Call VolleySingleton.getInstance(context) INSTEAD! Context shall be getApplicationContext() otherwise we would be leaking memory!
         RequestQueue queue = Volley.newRequestQueue(this); //Singleton ->
-        String url = Tools.URLMAP; //Assigning from static class?
-        Tools.errorShw = true; //Assigning from static class?
+
+        //!!! Assigning from static class?
+        String url = Tools.URLMAP;
+        Tools.errorShw = true;
 
         // Request a string response from the provided URL.
         //This should a JSONObject
@@ -204,6 +222,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
+
+                            /*
+                            *
+                            * JSON Parsing below shan't be needed!
+                            *
+                            * https://stackoverflow.com/questions/36759430/java-gson-fromjson-to-pojo-using-reflection-causes-java-lang-classcastexceptio
+                            *
+                            * */
 
 
                             //create first jSON object -> key: province, value: Array of objects.
@@ -224,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
                                 //for each object, dive in its link and find all the cities.
 
                                 //callApiCity(url);
+
+                                //Relaying on external variables to make decisions! This is unacceptable!
                                 if (Tools.foundCountry == false)
                                 {
                                     Tools.countryName.add(country);
@@ -237,7 +265,9 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-                           if (Tools.trueSearch == true && Tools.errorShw == true){
+
+                            //Relaying on external variables to make decisions! This is unacceptable!
+                            if (Tools.trueSearch == true && Tools.errorShw == true){
                                 Log.d("MISSING", "COUNTRY");
                                 errorMsg();
                             }
@@ -252,6 +282,8 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                //Error number instead of explanation?
                 Toast.makeText(getApplicationContext(),"-1",Toast.LENGTH_LONG).show();
             }
         });

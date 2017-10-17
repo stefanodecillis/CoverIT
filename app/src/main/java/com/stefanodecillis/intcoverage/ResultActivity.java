@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 
 public class ResultActivity extends AppCompatActivity {
 
+    //protected could be replaced with private! Wrong modifier.
     protected TextView addressTxt = null;
     protected TextView fttcTxt = null;
     protected TextView distCabTxt = null;
@@ -19,16 +20,18 @@ public class ResultActivity extends AppCompatActivity {
     protected TextView vdslDwTxt = null;
     protected TextView vdslUpTxt = null;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         initUI();
+
         Gson gson = new Gson();
+        //No null checking. Bad quality code.
         String shapeLineAsString = getIntent().getStringExtra("shapeLineObj");
         ShapeLine shapeObj = gson.fromJson(shapeLineAsString,ShapeLine.class);
 
+        //Not null checking. Bad quality code.
         addressTxt.setText(shapeObj.getAddress()+ "  ");
         fttcTxt.setText(shapeObj.getFttc());
         distCabTxt.setText(shapeObj.getDist_cab());
@@ -38,12 +41,14 @@ public class ResultActivity extends AppCompatActivity {
         vdslDwTxt.setText(shapeObj.getVdsl_Dw());
         vdslUpTxt.setText(shapeObj.getVdsl_Up());
 
+        //Logging with no shared tag. Makes debugging much harder.
         Log.d("RES", shapeObj.getVdsl_Dw());
         Log.d("RES", shapeObj.getVdsl_Up());
         Log.d("RES", shapeObj.getVdslStatus());
     }
 
     void initUI(){
+        //May use ButterKnife instead.
         addressTxt = (TextView) findViewById(R.id.addressTxt);
         fttcTxt = (TextView) findViewById(R.id.fttcTxt);
         distCabTxt = (TextView) findViewById(R.id.distCabTxt);

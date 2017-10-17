@@ -8,13 +8,24 @@ import java.util.ArrayList;
 
 public class Tools {
 
+    //Missing final modifier
     static public String URLMAP = "http://marlin.planetel.it/netmap/";
 
+    /*
+    *
+    * Those shan't be shared! Bad quality code. consider using getters/setters?
+    *
+    * Tools isn't supposed to contain variables. Would "Utils" be better suited?
+    *
+    */
+
+    //???
     static ArrayList<String> countryName = new ArrayList<String>();
     static ArrayList<String> cityName = new ArrayList<String>();
     static ArrayList<String> addressName = new ArrayList<String>();
     static ArrayList<String> listNum = new ArrayList<String>();
 
+    //???
     static boolean foundCountry = false;
     static boolean foundCity = false;
     static boolean foundAddr = false;
