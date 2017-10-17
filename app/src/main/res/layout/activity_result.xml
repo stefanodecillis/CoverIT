@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddddcd"
+    tools:context="com.stefanodecillis.intcoverage.ResultActivity">
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="false"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:text="Address"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/addressTxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_column="2"
+                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                android:textAlignment="textEnd"
+                android:textColor="#FF909090" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/fttc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="FTTC"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/fttcTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="fttc"
+                android:layout_marginRight="30dp"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/distCab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Distance from Cabinet"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/distCabTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="distCab"
+                android:layout_marginRight="30dp"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/adslDw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Estimated ADSL speed (down)"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/adslDwTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="0000"
+                android:layout_marginRight="30dp"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/adslUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Estimated ADSL speed (up)"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/adslUpTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="0000"
+                android:layout_marginRight="30dp"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/vdslStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="VDSL"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/vdslStatusTxt"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="yes/no"
+                android:layout_marginRight="30dp"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/vdslDw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Estimated VDSL speed (down)"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/vdslDwTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginRight="30dp"
+                android:text="00"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/vdslUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="Estimated VDSL speed (up)"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/vdslUpTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginRight="30dp"
+                android:text="00"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>

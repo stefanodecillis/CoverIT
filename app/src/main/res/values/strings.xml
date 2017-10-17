@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">"IntCoverage "</string>
+    <string name="ERROR">"error -1</string>
+    <string name="SHOWDATA">"Data is:"</string>
+</resources>

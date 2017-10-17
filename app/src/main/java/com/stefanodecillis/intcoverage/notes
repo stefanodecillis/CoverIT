@@ -1,0 +1,51 @@
+private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            return GET();
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
+            cityTxt.setText(result);
+        }
+    }
+
+    public static String GET(){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+            URL url = new URL(Tools.URLMAP);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            try {
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                result = in.toString();
+            } finally {
+                urlConnection.disconnect();
+            }
+
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        return result;
+    }
+
+
+----------------------------------------------------------------------------------------------------
+
+
+Bugs:
+
+- adapter non si aggiornano dopo la prima volta
+- landscape mode non ottimizzata
+- inesistente callback per la resultActivity  √
+- sistemare button   √
+- premendo invio, autocomplete cancella il testo
+
+
+Possibile ottimizzazione:
+
+- precaricare i dati durante le selezioni
+- avviso - indirizzo non trovato    √
