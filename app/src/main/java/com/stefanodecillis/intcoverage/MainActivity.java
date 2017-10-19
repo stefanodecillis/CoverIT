@@ -23,6 +23,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
@@ -49,13 +50,15 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
 
 
-    //Whose shan't be here!
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUI();
+
+        //build gson
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gson = gsonBuilder.create();
 
         //fetch request
         requestQueue = Volley.newRequestQueue(this);
@@ -82,24 +85,28 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void errorMsg (){
+    private void errorMsg (){
         Toast.makeText(getApplicationContext(),"Dati non presenti o errati",Toast.LENGTH_LONG).show();
         Tools.trueSearch = false;
         Tools.errorShw = true;
     }
-    public void errorMsg2 (){
+    private void errorMsg2 (){
         Toast.makeText(getApplicationContext(),"Inserire i dati prima di proseguire",Toast.LENGTH_LONG).show();
         Tools.trueSearch = false;
     }
 
     private void fetch() {
+        Log.i("FETCH", "start");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ENDPOINT,onPostsLoaded,onError);
+
+        requestQueue.add(stringRequest);
     }
 
     private final Response.Listener<String> onPostsLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array di province
+
+            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array di province --> ERROR
 
             Log.i("Prov_Activity", response);
         }
@@ -111,6 +118,13 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Prov_Activity", error.toString());
         }
     };
+
+    //funzione di prova per vedere se reflection funziona
+    private void printAll() {
+        for (int i = 0; i < Utils.arrayClassUtil.Province.size(); i++){
+            Log.d("PRINT", Utils.arrayClassUtil.Province.get(i).name);
+        }
+    }
 
 
 

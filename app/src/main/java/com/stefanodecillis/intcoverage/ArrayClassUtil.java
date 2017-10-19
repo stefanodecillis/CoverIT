@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class ArrayClassUtil {
 
     @SerializedName("Province")
-    ArrayList<Provincia> province;
+    ArrayList<Provincia> Province;
 
-    @SerializedName("Comuni")
+   /* @SerializedName("Comuni")
     ArrayList<Città> comuni;
 
     @SerializedName("Strade")
     ArrayList<Strada> strade;
 
     @SerializedName("Civici")
-    ArrayList<Civico> civici;
+    ArrayList<Civico> civici;*/
 }

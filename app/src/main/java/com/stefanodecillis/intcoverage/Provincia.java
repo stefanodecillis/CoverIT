@@ -20,7 +20,7 @@ public class Provincia {
 
     @SerializedName("Comune")
     Città citta;
-
+/*
     public ArrayList<Città> getComuni() {
         return comuni;
     }
@@ -29,5 +29,5 @@ public class Provincia {
         this.comuni = comuni;
     }
 
-    private ArrayList<Città> comuni;
+    private ArrayList<Città> comuni;*/
 }
