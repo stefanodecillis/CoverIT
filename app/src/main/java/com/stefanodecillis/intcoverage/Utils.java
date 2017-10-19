@@ -11,8 +11,6 @@ public class Utils {
     static ArrayClassUtil arrayClassUtil;
 
     static ArrayList<Provincia> province;
-
-    //non so se devo usarle, vedrò durante lo sviluppo
     static ArrayList<Città> comuni;
     static ArrayList<Strada> strade;
     static ArrayList<Civico> civici;

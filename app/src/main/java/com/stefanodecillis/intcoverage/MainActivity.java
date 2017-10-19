@@ -1,5 +1,6 @@
 package com.stefanodecillis.intcoverage;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Gson gson;
     private RequestQueue requestQueue;
+    ProvinciaAdapter provinciaAdapter;
 
 
     @Override
@@ -62,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         //fetch request
         requestQueue = Volley.newRequestQueue(this);
-        fetch();
+        fetchProv();
+
     }
 
 
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         Tools.trueSearch = false;
     }
 
-    private void fetch() {
+    private void fetchProv() {
         Log.i("FETCH", "start");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ENDPOINT,onPostsLoaded,onError);
 
@@ -106,8 +109,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(String response) {
 
-            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array di province --> ERROR
+            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
+            Utils.province = Utils.arrayClassUtil.Province;
 
+            printAll();
+            //fetchCom(Utils.province.get(0).url);
             Log.i("Prov_Activity", response);
         }
     };
@@ -121,11 +127,35 @@ public class MainActivity extends AppCompatActivity {
 
     //funzione di prova per vedere se reflection funziona
     private void printAll() {
-        for (int i = 0; i < Utils.arrayClassUtil.Province.size(); i++){
-            Log.d("PRINT", Utils.arrayClassUtil.Province.get(i).name);
-        }
+       /* for (int i = 0; i < Utils.comuni.size(); i++){
+            Log.d("PRINT", Utils.comuni.get(i).name);
+        }*/
+        provinciaAdapter = new ProvinciaAdapter(this,R.id.autocomplete,Utils.arrayClassUtil.Province);
+        autocomplete.setAdapter(provinciaAdapter);
     }
 
+    private void fetchCom(String url){
+        StringRequest request = new StringRequest(Request.Method.GET, url,onCitiesLoaded,onCitiesError);
+
+        requestQueue.add(request);
+    }
+
+    private final Response.Listener<String> onCitiesLoaded = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
+            Utils.comuni = Utils.arrayClassUtil.comuni;
+            //printAll();
+            Log.i("Prov_Activity", response);
+        }
+    };
+
+    private final Response.ErrorListener onCitiesError = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.e("Prov_Activity", error.toString());
+        }
+    };
 
 
 }

@@ -12,12 +12,12 @@ public class ArrayClassUtil {
     @SerializedName("Province")
     ArrayList<Provincia> Province;
 
-   /* @SerializedName("Comuni")
+    @SerializedName("Comuni")
     ArrayList<Città> comuni;
 
     @SerializedName("Strade")
     ArrayList<Strada> strade;
 
     @SerializedName("Civici")
-    ArrayList<Civico> civici;*/
+    ArrayList<Civico> civici;
 }
