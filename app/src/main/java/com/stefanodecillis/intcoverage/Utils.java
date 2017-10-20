@@ -1,6 +1,9 @@
 package com.stefanodecillis.intcoverage;
 
 
+import android.widget.ArrayAdapter;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -20,5 +23,11 @@ public class Utils {
     static String findCity = "";
     static String findAddr = "";
     static String findNumHouse = "";
+
+    static ArrayList<String> provList = new ArrayList<String>();
+    static ArrayList<String> comList = new ArrayList<String>();
+
+    static ArrayAdapter<String> provAdapter;
+    static ArrayAdapter<String> comAdapter;
 
 }

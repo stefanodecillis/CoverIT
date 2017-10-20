@@ -13,7 +13,7 @@ public class ArrayClassUtil {
     ArrayList<Provincia> Province;
 
     @SerializedName("Comuni")
-    ArrayList<Città> comuni;
+    ArrayList<Città> Comuni;
 
     @SerializedName("Strade")
     ArrayList<Strada> strade;

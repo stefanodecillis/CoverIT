@@ -35,28 +35,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String ENDPOINT = "http://marlin.planetel.it/netmap/";
 
 
     //objectUI
-    private FloatingActionButton findBtn = null;
-    private AutoCompleteTextView autocomplete = null;
-    private AutoCompleteTextView autocompleteCity = null;
-    private AutoCompleteTextView autocompleteAddr = null;
-    private AutoCompleteTextView autocompleteNum = null;
+    @BindView(R.id.findBtn) FloatingActionButton findBtn = null;
+    @BindView(R.id.autocomplete) AutoCompleteTextView autocomplete = null;
+    @BindView(R.id.autocompleteCity) AutoCompleteTextView autocompleteCity = null;
+    @BindView(R.id.autocompleteAddr) AutoCompleteTextView autocompleteAddr = null;
+    @BindView(R.id.autocompleteNum) AutoCompleteTextView autocompleteNum = null;
 
     private Gson gson;
     private RequestQueue requestQueue;
-    ProvinciaAdapter provinciaAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initUI();
+
+        //Butterknife is used here
+        ButterKnife.bind(this);
+
+        //init adapters
+        Utils.provAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.provList);
+        Utils.comAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.comList);
 
         //build gson
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -66,16 +73,14 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         fetchProv();
 
-    }
+        //items on autocompleteTextView clicked
+        autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
+                onProvClicked(adapter,view,pos,id);
+            }
+        });
 
-
-    //ButterKnife should be used instead.
-    void initUI(){
-        findBtn = (FloatingActionButton) findViewById(R.id.findBtn);
-        autocomplete = (AutoCompleteTextView) findViewById(R.id.autocomplete);
-        autocompleteCity = (AutoCompleteTextView) findViewById(R.id.autocompleteCity);
-        autocompleteAddr = (AutoCompleteTextView) findViewById(R.id.autocompleteAddr);
-        autocompleteNum = (AutoCompleteTextView) findViewById(R.id.autocompleteNum);
     }
 
 
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchProv() {
-        Log.i("FETCH", "start");
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ENDPOINT,onPostsLoaded,onError);
 
         requestQueue.add(stringRequest);
@@ -112,8 +117,7 @@ public class MainActivity extends AppCompatActivity {
             Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
             Utils.province = Utils.arrayClassUtil.Province;
 
-            printAll();
-            //fetchCom(Utils.province.get(0).url);
+            fillAdapter();
             Log.i("Prov_Activity", response);
         }
     };
@@ -125,13 +129,12 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    //funzione di prova per vedere se reflection funziona
-    private void printAll() {
-       /* for (int i = 0; i < Utils.comuni.size(); i++){
-            Log.d("PRINT", Utils.comuni.get(i).name);
-        }*/
-        provinciaAdapter = new ProvinciaAdapter(this,R.id.autocomplete,Utils.arrayClassUtil.Province);
-        autocomplete.setAdapter(provinciaAdapter);
+
+    private void fillAdapter() {
+        for (int i = 0; i < Utils.province.size(); i++){
+            Utils.provList.add(Utils.province.get(i).name);
+        }
+        autocomplete.setAdapter(Utils.provAdapter);
     }
 
     private void fetchCom(String url){
@@ -143,10 +146,31 @@ public class MainActivity extends AppCompatActivity {
     private final Response.Listener<String> onCitiesLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
-            Utils.comuni = Utils.arrayClassUtil.comuni;
-            //printAll();
-            Log.i("Prov_Activity", response);
+            Log.i("FETCH", "start");
+
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
+
+                for (int i = 0; i < Utils.arrayClassUtil.Province.size(); i++){
+                    if (Utils.findCountry.equalsIgnoreCase(Utils.arrayClassUtil.Province.get(i).name)){
+                        Provincia provincia = Utils.arrayClassUtil.Province.get(i);
+                        provincia = gson.fromJson(String.valueOf(jsonObject1), Provincia.class);
+                        Utils.arrayClassUtil.Comuni = provincia.Comuni;
+                    }
+                }
+                Utils.comuni = Utils.arrayClassUtil.Comuni;
+
+                Log.i("Prov_Activity", response);
+
+                if (Utils.comuni != null)
+                fillComAdapter();
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
     };
 
@@ -157,5 +181,23 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private void fillComAdapter(){
+        for (int i = 0; i < Utils.comuni.size(); i++){
+            Utils.comList.add(Utils.comuni.get(i).name);
+        }
+        Utils.comAdapter.notifyDataSetChanged();
+        autocompleteCity.setAdapter(Utils.comAdapter);
+    }
+
+
+    private void onProvClicked(AdapterView<?> adapter, View view, int pos,long id) {
+        for (int i = 0; i < Utils.province.size(); i++) {
+            if (autocomplete.getText().toString().equalsIgnoreCase(Utils.province.get(i).name)) {
+                Log.d("PROVCLICKED", autocomplete.getText().toString());
+                Utils.findCountry = autocomplete.getText().toString();
+                fetchCom(Utils.province.get(i).url);
+            }
+        }
+    }
 
 }

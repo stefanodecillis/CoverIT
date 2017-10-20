@@ -22,5 +22,5 @@ public class Provincia {
     Città citta;
 
     @SerializedName("Comuni")
-    ArrayList<Città> comuni;
+    ArrayList<Città> Comuni;
 }

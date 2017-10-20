@@ -16,14 +16,4 @@ public class Città {
     String name;
 
     String url;
-
-    public ArrayList<Strada> getStrade() {
-        return strade;
-    }
-
-    public void setStrade(ArrayList<Strada> strade) {
-        this.strade = strade;
-    }
-
-    private ArrayList<Strada> strade;
 }
