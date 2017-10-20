@@ -16,4 +16,10 @@ public class Città {
     String name;
 
     String url;
+
+    @SerializedName("Strada")
+    Strada strada;
+
+    @SerializedName("Strade")
+    ArrayList<Strada> strade;
 }

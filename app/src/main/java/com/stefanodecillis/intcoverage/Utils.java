@@ -26,8 +26,12 @@ public class Utils {
 
     static ArrayList<String> provList = new ArrayList<String>();
     static ArrayList<String> comList = new ArrayList<String>();
+    static ArrayList<String> addrList = new ArrayList<String>();
+    static ArrayList<String> numList = new ArrayList<String>();
 
     static ArrayAdapter<String> provAdapter;
     static ArrayAdapter<String> comAdapter;
+    static ArrayAdapter<String> addrAdapter;
+    static ArrayAdapter<String> numAdapter;
 
 }

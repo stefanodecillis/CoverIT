@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         //init adapters
         Utils.provAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.provList);
         Utils.comAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.comList);
+        Utils.addrAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.addrList);
+        Utils.numAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.numList);
 
         //build gson
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -78,6 +80,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
                 onProvClicked(adapter,view,pos,id);
+            }
+        });
+
+        autocompleteCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
+                onComClicked(adapter,view,pos,id);
+            }
+        });
+
+        autocompleteAddr.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
+                onAddrClicked(adapter,view,pos,id);
             }
         });
 
@@ -104,24 +120,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchProv() {
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, ENDPOINT,onPostsLoaded,onError);
-
         requestQueue.add(stringRequest);
+    }
+    private void fetchCom(String url){
+        StringRequest request = new StringRequest(Request.Method.GET, url,onCitiesLoaded,onCitiesError);
+        requestQueue.add(request);
+    }
+    private void fetchAddr(String url){
+        StringRequest request = new StringRequest(Request.Method.GET, url,onAddrLoaded,onAddrError);
+        requestQueue.add(request);
+    }
+    private void fetchNum(String url){
+        StringRequest request = new StringRequest(Request.Method.GET, url,onNumLoaded,onNumError);
+        requestQueue.add(request);
     }
 
     private final Response.Listener<String> onPostsLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-
             Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
             Utils.province = Utils.arrayClassUtil.Province;
-
             fillAdapter();
             Log.i("Prov_Activity", response);
         }
     };
-
     private final Response.ErrorListener onError = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
@@ -129,29 +152,12 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-    private void fillAdapter() {
-        for (int i = 0; i < Utils.province.size(); i++){
-            Utils.provList.add(Utils.province.get(i).name);
-        }
-        autocomplete.setAdapter(Utils.provAdapter);
-    }
-
-    private void fetchCom(String url){
-        StringRequest request = new StringRequest(Request.Method.GET, url,onCitiesLoaded,onCitiesError);
-
-        requestQueue.add(request);
-    }
-
     private final Response.Listener<String> onCitiesLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            Log.i("FETCH", "start");
-
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
-
                 for (int i = 0; i < Utils.arrayClassUtil.Province.size(); i++){
                     if (Utils.findCountry.equalsIgnoreCase(Utils.arrayClassUtil.Province.get(i).name)){
                         Provincia provincia = Utils.arrayClassUtil.Province.get(i);
@@ -160,42 +166,149 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 Utils.comuni = Utils.arrayClassUtil.Comuni;
-
-                Log.i("Prov_Activity", response);
-
+                Log.i("Com_Activity", response);
                 if (Utils.comuni != null)
-                fillComAdapter();
-
-
+                    fillComAdapter();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
     };
-
     private final Response.ErrorListener onCitiesError = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Log.e("Prov_Activity", error.toString());
+            Log.e("Com_Activity", error.toString());
         }
     };
 
-    private void fillComAdapter(){
-        for (int i = 0; i < Utils.comuni.size(); i++){
-            Utils.comList.add(Utils.comuni.get(i).name);
+    private final Response.Listener<String> onAddrLoaded = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
+                JSONObject jsonObject2 = new JSONObject(jsonObject1.optString("Comune"));
+                for (int i = 0; i < Utils.arrayClassUtil.Comuni.size(); i++){
+                    if (Utils.findCity.equalsIgnoreCase(Utils.arrayClassUtil.Comuni.get(i).name)){
+                        Città citta = Utils.arrayClassUtil.Comuni.get(i);
+                        citta = gson.fromJson(String.valueOf(jsonObject2), Città.class);
+                        Utils.arrayClassUtil.strade = citta.strade;
+                    }
+                }
+                Utils.strade = Utils.arrayClassUtil.strade;
+                Log.i("Addr_Activity", response);
+                if (Utils.strade != null)
+                    fillAddrAdapter();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-        Utils.comAdapter.notifyDataSetChanged();
-        autocompleteCity.setAdapter(Utils.comAdapter);
+    };
+    private final Response.ErrorListener onAddrError = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.e("Addr_Activity", error.toString());
+        }
+    };
+
+    private final Response.Listener<String> onNumLoaded = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            Log.i("FETCH", "start");
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
+                JSONObject jsonObject2 = new JSONObject(jsonObject1.optString("Comune"));
+                for (int i = 0; i < Utils.arrayClassUtil.Comuni.size(); i++){
+                    if (Utils.findCity.equalsIgnoreCase(Utils.arrayClassUtil.Comuni.get(i).name)){
+                        Città citta = Utils.arrayClassUtil.Comuni.get(i);
+                        citta = gson.fromJson(String.valueOf(jsonObject2), Città.class);
+                        Utils.arrayClassUtil.civici = citta.strada.civici;
+                    }
+                }
+                Utils.civici = Utils.arrayClassUtil.civici;
+                Log.i("Num_Activity", response);
+                if (Utils.civici != null)
+                    fillNumAdapter();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    private final Response.ErrorListener onNumError = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.e("Num_Activity", error.toString());
+        }
+    };
+
+   //filling adapters
+    private void fillAdapter() {
+        for (int i = 0; i < Utils.province.size(); i++){
+            Utils.provList.add(Utils.province.get(i).name);
+        }
+        autocomplete.setAdapter(Utils.provAdapter);
     }
 
+    private void fillComAdapter(){
+        Utils.comAdapter.clear();
+        Utils.comList.clear();
+        for (int i = 0; i < Utils.comuni.size(); i++){
+            //    Utils.comList.add(Utils.comuni.get(i).name);
+            Utils.comAdapter.add(Utils.comuni.get(i).name);  //errore -> sto adattando i dati per la UI e non viceversa
+        }
+        autocompleteCity.setAdapter(Utils.comAdapter);
+    }
+    private void fillAddrAdapter(){
+        Utils.addrAdapter.clear();
+        Utils.addrList.clear();
+        for (int i = 0; i < Utils.strade.size(); i++){
+            //    Utils.comList.add(Utils.comuni.get(i).name);
+            Utils.addrAdapter.add(Utils.strade.get(i).name);  //errore -> sto adattando i dati per la UI e non viceversa
+        }
+        autocompleteAddr.setAdapter(Utils.addrAdapter);
+    }
 
+    private void fillNumAdapter(){
+        Utils.numAdapter.clear();
+        Utils.numList.clear();
+        for (int i = 0; i < Utils.civici.size(); i++){
+            //    Utils.comList.add(Utils.comuni.get(i).name);
+            Utils.numAdapter.add(Utils.civici.get(i).civico);  //errore -> sto adattando i dati per la UI e non viceversa
+        }
+        autocompleteNum.setAdapter(Utils.numAdapter);
+    }
+
+    //on AutocompleteTextView Clicked methods
     private void onProvClicked(AdapterView<?> adapter, View view, int pos,long id) {
         for (int i = 0; i < Utils.province.size(); i++) {
             if (autocomplete.getText().toString().equalsIgnoreCase(Utils.province.get(i).name)) {
-                Log.d("PROVCLICKED", autocomplete.getText().toString());
+                Log.d("PROV_CLICKED", autocomplete.getText().toString());
                 Utils.findCountry = autocomplete.getText().toString();
                 fetchCom(Utils.province.get(i).url);
+                autocompleteCity.setText("");
+            }
+        }
+    }
+
+    private void onComClicked(AdapterView<?> adapter, View view, int pos,long id) {
+        for (int i = 0; i < Utils.comuni.size(); i++) {
+            if (autocompleteCity.getText().toString().equalsIgnoreCase(Utils.comuni.get(i).name)) {
+                Log.d("COM_CLICKED", autocompleteCity.getText().toString());
+                Utils.findCity = autocompleteCity.getText().toString();
+                fetchAddr(Utils.comuni.get(i).url);
+                autocompleteAddr.setText("");
+            }
+        }
+    }
+
+    private void onAddrClicked(AdapterView<?> adapter, View view, int pos,long id) {
+        for (int i = 0; i < Utils.strade.size(); i++) {
+            if (autocompleteAddr.getText().toString().equalsIgnoreCase(Utils.strade.get(i).name)) {
+                Log.d("ADDR_CLICKED", autocompleteAddr.getText().toString());
+                Utils.findAddr = autocompleteAddr.getText().toString();
+                fetchNum(Utils.strade.get(i).url);
+                autocompleteNum.setText("");
             }
         }
     }

@@ -18,13 +18,7 @@ public class Strada {
 
     String url;
 
-    private ArrayList<Civico> civici;
+    @SerializedName("Civici")
+    ArrayList<Civico> civici;
 
-    public ArrayList<Civico> getCivici() {
-        return civici;
-    }
-
-    public void setCivici(ArrayList<Civico> civici) {
-        this.civici = civici;
-    }
 }
