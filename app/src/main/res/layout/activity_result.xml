@@ -8,27 +8,24 @@
     tools:context="com.stefanodecillis.intcoverage.ResultActivity">
 
     <TableLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         android:stretchColumns="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="0dp">
 
         <View
             android:layout_height="2dip"
             android:background="#FF909090" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="false"
-            android:orientation="horizontal">
+        <TableRow>
 
             <TextView
                 android:id="@+id/address"
@@ -42,12 +39,11 @@
 
             <TextView
                 android:id="@+id/addressTxt"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                android:textAlignment="textEnd"
-                android:textColor="#FF909090" />
+                android:text="corso como 52, andria"
+                android:textAlignment="textEnd" />
         </TableRow>
 
         <View
@@ -71,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:layout_marginRight="5dp"
                 android:text="fttc"
-                android:layout_marginRight="30dp"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -97,8 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:layout_marginRight="5dp"
                 android:text="distCab"
-                android:layout_marginRight="30dp"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -113,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Estimated ADSL speed (down)"
+                android:text="ADSL speed (down)"
                 tools:layout_editor_absoluteX="155dp"
                 tools:layout_editor_absoluteY="-1dp" />
 
@@ -123,8 +119,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:layout_marginRight="5dp"
                 android:text="0000"
-                android:layout_marginRight="30dp"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -139,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Estimated ADSL speed (up)"
+                android:text="ADSL speed (up)"
                 tools:layout_editor_absoluteX="155dp"
                 tools:layout_editor_absoluteY="-1dp" />
 
@@ -149,8 +145,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:layout_marginRight="5dp"
                 android:text="0000"
-                android:layout_marginRight="30dp"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -175,8 +171,8 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:layout_marginRight="5dp"
                 android:text="yes/no"
-                android:layout_marginRight="30dp"
                 android:textAlignment="textEnd" />
         </TableRow>
 
@@ -191,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Estimated VDSL speed (down)"
+                android:text="VDSL speed (down)"
                 tools:layout_editor_absoluteX="155dp"
                 tools:layout_editor_absoluteY="-1dp" />
 
@@ -201,7 +197,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="5dp"
                 android:text="00"
                 android:textAlignment="textEnd" />
         </TableRow>
@@ -217,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:text="Estimated VDSL speed (up)"
+                android:text="VDSL speed (up)"
                 tools:layout_editor_absoluteX="155dp"
                 tools:layout_editor_absoluteY="-1dp" />
 
@@ -227,7 +223,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="5dp"
+                android:text="00"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/sluDw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="SLU connection speed (down)"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/sluDwTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginRight="5dp"
+                android:text="00"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <View
+            android:layout_height="2dip"
+            android:background="#FF909090" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/sluUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="SLU connection speed (up)"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/sluUpTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_marginRight="5dp"
                 android:text="00"
                 android:textAlignment="textEnd" />
         </TableRow>

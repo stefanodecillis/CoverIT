@@ -4,73 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ddddcd"
+    android:background="#5CCF6B"
     tools:context="com.stefanodecillis.intcoverage.MainActivity">
 
 
-    <AutoCompleteTextView
-        android:id="@+id/autocompleteCity"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:completionHint="City"
-        android:hint="Città"
-        android:textColorLink="@android:color/holo_red_dark"
-        app:layout_constraintHorizontal_bias="0.496"
+    <View
+        android:id="@+id/view5"
+        android:layout_width="113dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="-8dp"
+        android:background="#FF909090"
+        android:elevation="11dp"
+        app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autocomplete"
-        tools:layout_editor_absoluteX="62dp" />
+        app:layout_constraintTop_toBottomOf="@+id/autocompleteNum" />
 
-    <AutoCompleteTextView
-        android:id="@+id/autocomplete"
+    <View
+        android:id="@+id/view"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:completionHint="Country"
-        android:hint="Provincia"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.498" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autocompleteAddr"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="19dp"
-        android:hint="Via/piazza/Corso.."
+        android:layout_height="2dp"
+        android:layout_marginTop="58dp"
+        android:background="#FF909090"
+        android:elevation="11dp"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autocompleteCity" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <AutoCompleteTextView
         android:id="@+id/autocompleteNum"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-8dp"
+        android:background="@android:color/background_light"
+        android:elevation="11dp"
         android:hint="Numero Civico"
-        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintHorizontal_bias="0.332"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autocompleteAddr" />
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:background="#FF909090"
+        android:elevation="11dp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autocomplete"
+        android:layout_marginTop="-1dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autocompleteCity"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@android:color/background_light"
+        android:elevation="11dp"
+        android:hint="Città"
+        android:textColorLink="@android:color/holo_red_dark"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        android:layout_marginTop="-2dp" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:background="#FF909090"
+        android:elevation="11dp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autocompleteCity"
+        android:layout_marginTop="-2dp" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:background="#FF909090"
+        android:elevation="11dp"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autocompleteAddr"
+        android:layout_marginTop="-8dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autocompleteAddr"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@android:color/background_light"
+        android:elevation="11dp"
+        android:hint="Via/piazza/Corso.."
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        android:layout_marginTop="-2dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autocomplete"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/background_light"
+        android:elevation="11dp"
+        android:hint="Provincia"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/findBtn"
         android:layout_width="68dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="1dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="13dp"
         android:text="Button"
-        app:backgroundTint="#429cc3"
-        app:layout_constraintHorizontal_bias="0.738"
+        app:backgroundTint="#4C914E"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autocompleteNum"
-        app:srcCompat="@android:drawable/ic_menu_search"
+        app:layout_constraintTop_toBottomOf="@+id/view5"
+        app:srcCompat="@android:drawable/ic_menu_search" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="684dp"
+        android:layout_height="132dp"
+        android:layout_marginBottom="-24dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/androidbott"
+        app:layout_constraintHorizontal_bias="1.0" />
+
 </android.support.constraint.ConstraintLayout>

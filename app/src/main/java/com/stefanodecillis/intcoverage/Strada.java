@@ -21,4 +21,7 @@ public class Strada {
     @SerializedName("Civici")
     ArrayList<Civico> civici;
 
+    @SerializedName("Civico")
+    Civico civico;
+
 }

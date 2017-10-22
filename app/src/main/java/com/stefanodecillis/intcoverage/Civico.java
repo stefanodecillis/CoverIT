@@ -13,4 +13,5 @@ public class Civico {
 
     @SerializedName("url")
     String url;
+
 }

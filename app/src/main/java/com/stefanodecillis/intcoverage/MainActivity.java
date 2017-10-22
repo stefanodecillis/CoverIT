@@ -1,8 +1,7 @@
 package com.stefanodecillis.intcoverage;
 
-import android.app.DownloadManager;
+
 import android.content.Intent;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,30 +10,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -73,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
         //fetch request
         requestQueue = Volley.newRequestQueue(this);
-        fetchProv();
+        if(Utils.provList.isEmpty() || Utils.provList == null) {
+            fetchProv();  //prevent from adding names going back to this view
+        } else {
+            autocomplete.setAdapter(Utils.provAdapter);
+        }
 
         //items on autocompleteTextView clicked
         autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -97,14 +89,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //floating button clicked
+        findBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Utils.findNumHouse = autocompleteNum.getText().toString();
+                for (int i = 0; i < Utils.civici.size(); i++){
+                    if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)){
+                        fetchInfo(Utils.civici.get(i).url);
+                    }
+                }
+                Toast.makeText(getApplicationContext(),"Searching..",Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 
     //intent to start another activity --> result
-    public void getResult(ShapeLine shapeLine) {
+    public void getResult(InfoLine infoLine) {
         Intent intent = new Intent(this, ResultActivity.class);
         Gson gson = new Gson();
-        String shapeLineString = gson.toJson(shapeLine);
+        String shapeLineString = gson.toJson(infoLine);
         intent.putExtra("shapeLineObj", shapeLineString);
         startActivity(intent);
     }
@@ -124,15 +130,19 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
     private void fetchCom(String url){
-        StringRequest request = new StringRequest(Request.Method.GET, url,onCitiesLoaded,onCitiesError);
+        StringRequest request = new StringRequest(Request.Method.GET, url,onCitiesLoaded,onError);
         requestQueue.add(request);
     }
     private void fetchAddr(String url){
-        StringRequest request = new StringRequest(Request.Method.GET, url,onAddrLoaded,onAddrError);
+        StringRequest request = new StringRequest(Request.Method.GET, url,onAddrLoaded,onError);
         requestQueue.add(request);
     }
     private void fetchNum(String url){
-        StringRequest request = new StringRequest(Request.Method.GET, url,onNumLoaded,onNumError);
+        StringRequest request = new StringRequest(Request.Method.GET, url,onNumLoaded,onError);
+        requestQueue.add(request);
+    }
+    private void fetchInfo(String url){
+        StringRequest request = new StringRequest(Request.Method.GET, url,onPostLoaded,onError);
         requestQueue.add(request);
     }
 
@@ -148,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     private final Response.ErrorListener onError = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Log.e("Prov_Activity", error.toString());
+            Log.e("error_fetch_Activity", error.toString());
         }
     };
 
@@ -172,12 +182,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-    };
-    private final Response.ErrorListener onCitiesError = new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.e("Com_Activity", error.toString());
         }
     };
 
@@ -204,17 +208,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    private final Response.ErrorListener onAddrError = new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.e("Addr_Activity", error.toString());
-        }
-    };
 
     private final Response.Listener<String> onNumLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            Log.i("FETCH", "start");
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
@@ -235,12 +232,31 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    private final Response.ErrorListener onNumError = new Response.ErrorListener() {
+    private final Response.Listener<String> onPostLoaded = new Response.Listener<String>() {
         @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.e("Num_Activity", error.toString());
+        public void onResponse(String response) {
+            Log.i("FETCH", "start");
+            try {
+                //Api forces me to parse like this
+                JSONObject jsonObject = new JSONObject(response);
+                JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
+                JSONObject jsonObject2 = new JSONObject(jsonObject1.optString("Comune"));
+                JSONObject jsonObject3 = new JSONObject(jsonObject2.optString("Strada"));
+                JSONArray jsonArray = new JSONArray(jsonObject3.optString("Civico"));
+
+                //reflection for all info
+                InfoLine infoLine = gson.fromJson(String.valueOf(jsonArray.get(0)), InfoLine.class);
+
+                Log.i("Post_Activity", response);
+
+                //intent to result activity
+                getResult(infoLine);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     };
+
 
    //filling adapters
     private void fillAdapter() {
