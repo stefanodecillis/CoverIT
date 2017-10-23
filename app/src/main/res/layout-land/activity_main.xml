@@ -131,7 +131,7 @@
         android:layout_height="68dp"
         android:layout_marginTop="13dp"
         android:text="Button"
-        app:backgroundTint="#4C914E"
+        app:backgroundTint="#81c784"
         app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

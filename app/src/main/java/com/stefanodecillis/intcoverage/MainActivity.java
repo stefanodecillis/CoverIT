@@ -94,12 +94,16 @@ public class MainActivity extends AppCompatActivity {
         findBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Utils.findNumHouse = autocompleteNum.getText().toString();
-                for (int i = 0; i < Utils.civici.size(); i++){
-                    if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)){
-                        fetchInfo(Utils.civici.get(i).url);
+                if (Utils.findNumHouse != "" || Utils.findNumHouse != null) {
+                    for (int i = 0; i < Utils.civici.size(); i++) {
+                        if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)) {
+                            fetchInfo(Utils.civici.get(i).url);
+                        }
                     }
+                    Toast.makeText(getApplicationContext(), "Searching..", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(getApplicationContext(),"Searching..",Toast.LENGTH_SHORT).show();
             }
         });
 
