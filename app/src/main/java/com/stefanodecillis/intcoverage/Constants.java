@@ -19,4 +19,5 @@ public class Constants {
     //states of APIs
     public static final String active = "Attivo";
     public static final String inactive = "NO";
+    public static final String URLMAP = "http://marlin.planetel.it/netmap/";
 }

@@ -31,9 +31,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String ENDPOINT = "http://marlin.planetel.it/netmap/";
-
-
     //objectUI
     @BindView(R.id.findBtn)
     FloatingActionButton findBtn = null;
@@ -165,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchProv() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, ENDPOINT,onPostsLoaded,onError);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URLMAP,onPostsLoaded,onError);
         requestQueue.add(stringRequest);
     }
     private void fetchCom(String url){
