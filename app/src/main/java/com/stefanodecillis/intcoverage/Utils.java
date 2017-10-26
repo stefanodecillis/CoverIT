@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Utils {
     static ArrayClassUtil arrayClassUtil;
+    static InfoLine infoLine;
 
     static ArrayList<Provincia> province;
     static ArrayList<Città> comuni;

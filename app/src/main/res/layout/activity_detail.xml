@@ -6,503 +6,510 @@
     android:layout_height="match_parent"
     tools:context="com.stefanodecillis.intcoverage.DetailActivity">
 
-    <TableLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:stretchColumns="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="false"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
+            android:stretchColumns="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:text="Address"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
 
-
-            <TextView
-                android:id="@+id/addressTxt"
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_column="2"
-                android:text="ll"
-                android:textAlignment="textEnd"
-                android:textColor="#FF909090" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/fttc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="FTTC"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/fttcTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="fttc"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/distCab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Distance from Cabinet"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/distCabTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="distCab"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/adslDw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Est. ADSL speed (down)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/adslDwTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="0000"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/adslUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Est. ADSL speed (up)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/adslUpTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="0000"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/vdslStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="VDSL"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/vdslStatusTxt"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="yes/no"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/vdslDw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Est. VDSL speed (down)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/vdslDwTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/vdslUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Est. VDSL speed (up)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/vdslUpTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/slulStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Copertura SLU"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/sluStatusTxt"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="yes/no"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/sluDw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Est. SLU speed (down)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/sluDwTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/sluUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Est. SLU speed (up)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/sluUpTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-    <TextView
-        android:id="@+id/asim_atm_Status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="1"
-        android:text="Copertura bitstream ASIM ATM"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="-1dp" />
-
-
-    <TextView
-        android:id="@+id/asim_atm_StatusTxt"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_column="2"
-        android:text="yes/no"
-        android:textAlignment="textEnd" />
-</TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/asim_atm_6dbDw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:text="asim atm 6db speed(down)"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="-1dp" />
-
-
-        <TextView
-            android:id="@+id/asim_atm_6dbDwTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:text="00"
-            android:textAlignment="textEnd" />
-    </TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/asim_atm_6dbUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:text="asim atm 6db speed(up)"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="-1dp" />
-
-
-        <TextView
-            android:id="@+id/asim_atm_6dbUptxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:text="00"
-            android:textAlignment="textEnd" />
-    </TableRow>
-
-    <View
-        android:layout_height="2dip"
-        android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/asim_atm_11dbDw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="asim atm 11db speed(down)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/asim_atm_11dbDwTxt"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/asim_atm_11dbUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="asim atm 11db speed(up)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/asim_atm_11dbUpTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/asim_atm_12dbDw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="asim atm 12db speed(down)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-        <TextView
-            android:id="@+id/asim_atm_12dbDwtxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:text="00"
-            android:textAlignment="textEnd" />
-    </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-        <TableRow>
-
-            <TextView
-                android:id="@+id/asim_atm_12dbUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="asim atm 12db speed(up)"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/asim_atm_12dbUptxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-        <TableRow>
-
-            <TextView
-                android:id="@+id/asim_atm_dist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:text="Distance from Asim Atm"
-                tools:layout_editor_absoluteX="155dp"
-                tools:layout_editor_absoluteY="-1dp" />
-
-
-            <TextView
-                android:id="@+id/asim_atm_distTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="2"
-                android:text="00"
-                android:textAlignment="textEnd" />
-        </TableRow>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-</TableLayout>
-
-
+                android:animateLayoutChanges="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:text="Address"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/addressTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FF909090" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/fttc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="FTTC"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/fttcTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="fttc"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/distCab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Distance from Cabinet"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/distCabTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="distCab"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/adslDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Est. ADSL speed (down)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/adslDwTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="0000"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/adslUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Est. ADSL speed (up)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/adslUpTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text= "00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/vdslStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="VDSL"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/vdslStatusTxt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="yes/no"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/vdslDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Est. VDSL speed (down)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/vdslDwTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/vdslUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Est. VDSL speed (up)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/vdslUpTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/slulStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Copertura SLU"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/sluStatusTxt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="yes/no"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/sluDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Est. SLU speed (down)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/sluDwTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/defaultValue"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/sluUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Est. SLU speed (up)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/sluUpTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/copertura_bitstream_asim_atm"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_StatusTxt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="yes/no"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_6dbDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/asim_atm_6db_speed_down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_6dbDwTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_6dbUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/asim_atm_6db_speed_up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_6dbUptxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_11dbDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/asim_atm_11db_speed_down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_11dbDwTxt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_11dbUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/asim_atm_11db_speed_up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_11dbUpTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_12dbDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/asim_atm_12db_speed_down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_12dbDwtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_12dbUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/asim_atm_12db_speed_up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_12dbUptxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_atm_dist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="@string/distance_from_asim_atm"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_atm_distTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+        </TableLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

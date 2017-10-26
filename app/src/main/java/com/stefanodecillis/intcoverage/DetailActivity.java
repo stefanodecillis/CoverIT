@@ -1,5 +1,6 @@
 package com.stefanodecillis.intcoverage;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -49,12 +50,12 @@ public class DetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         gson = new Gson();
-        String shapeLineAsString = getIntent().getStringExtra("shapeLine");
+        String shapeLineAsString = getIntent().getStringExtra(Constants.intent_extra);
         InfoLine shapeObj = gson.fromJson(shapeLineAsString,InfoLine.class);
 
 
         if (shapeObj != null && shapeLineAsString != null && shapeLineAsString != "") {
-            addressTxt.setText(shapeObj.nameLine());
+            addressTxt.setText(writeAddress(shapeObj.nameLine()));
             fttcTxt.setText(shapeObj.getFttc());
             distCabTxt.setText(shapeObj.getDistCab());
             adslDwTxt.setText(shapeObj.getSpeedAdsl_down());
@@ -77,8 +78,12 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-
-    private void writeStuff(){
-
+    //problem with table row. This method creates a suitable string for my layout
+    private String writeAddress(String address){
+        if (address.length() > 20) {
+            return (address.substring(0,20) + "...");  // the 20 value is a generic value
+        } else {
+            return address;
+        }
     }
 }

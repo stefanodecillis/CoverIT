@@ -2,7 +2,9 @@ package com.stefanodecillis.intcoverage;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.jorgecastilloprz.FABProgressCircle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONArray;
@@ -32,11 +35,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     //objectUI
-    @BindView(R.id.findBtn) FloatingActionButton findBtn = null;
-    @BindView(R.id.autocomplete) AutoCompleteTextView autocomplete = null;
-    @BindView(R.id.autocompleteCity) AutoCompleteTextView autocompleteCity = null;
-    @BindView(R.id.autocompleteAddr) AutoCompleteTextView autocompleteAddr = null;
-    @BindView(R.id.autocompleteNum) AutoCompleteTextView autocompleteNum = null;
+    @BindView(R.id.findBtn)
+    FloatingActionButton findBtn = null;
+    @BindView(R.id.autocomplete)
+    AutoCompleteTextView autocomplete = null;
+    @BindView(R.id.autocompleteCity)
+    AutoCompleteTextView autocompleteCity = null;
+    @BindView(R.id.autocompleteAddr)
+    AutoCompleteTextView autocompleteAddr = null;
+    @BindView(R.id.autocompleteNum)
+    AutoCompleteTextView autocompleteNum = null;
+    @BindView(R.id.fabProgressCircle)
+    FABProgressCircle fabProgressCircle = null;
 
     private Gson gson;
     private RequestQueue requestQueue;
@@ -49,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         //Butterknife is used here
         ButterKnife.bind(this);
 
+        initUI();
         //init adapters
         Utils.provAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.provList);
         Utils.comAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.comList);
@@ -66,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             autocomplete.setAdapter(Utils.provAdapter);
         }
+
+    }
+
+
+    private void initUI() {
 
         //items on autocompleteTextView clicked
         autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,40 +109,59 @@ public class MainActivity extends AppCompatActivity {
         //floating button clicked
         findBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Utils.findNumHouse = autocompleteNum.getText().toString();
-                if (Utils.findNumHouse != "" || Utils.findNumHouse != null) {
-                    for (int i = 0; i < Utils.civici.size(); i++) {
-                        if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)) {
-                            fetchInfo(Utils.civici.get(i).url);
+                if (checkAutocompleteTxt() && checkLists()) {                      //check if i'm using null arrayList
+                    Utils.findNumHouse = autocompleteNum.getText().toString();
+                    if (Utils.findNumHouse != "" || Utils.findNumHouse != null) {          //check if i'm searching some null value
+                        for (int i = 0; i < Utils.civici.size(); i++) {
+                            if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)) {
+                                Log.d(Constants.fetching, "Fetching");
+                                fetchInfo(Utils.civici.get(i).url);
+                            }
                         }
+                        Toast.makeText(getApplicationContext(), Constants.searching, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(getApplicationContext(), "Searching..", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),Constants.err_fields,Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
-
 
     //intent to start another activity --> result
     public void getResult(InfoLine infoLine) {
         Intent intent = new Intent(this, ResultActivity.class);
         Gson gson = new Gson();
         String shapeLineString = gson.toJson(infoLine);
-        intent.putExtra("shapeLineObj", shapeLineString);
+        intent.putExtra(Constants.intent_extra, shapeLineString);
         startActivity(intent);
     }
 
-    private void errorMsg (){
-        Toast.makeText(getApplicationContext(),"Dati non presenti o errati",Toast.LENGTH_LONG).show();
-        Tools.trueSearch = false;
-        Tools.errorShw = true;
+    private Boolean checkAutocompleteTxt(){
+        if (autocomplete.getText().toString() != "" &&
+                autocompleteCity.getText().toString() != "" &&
+                autocompleteAddr.getText().toString() != "" &&
+                autocompleteNum.getText().toString() != ""){
+            return true;
+        } else {
+            return false;
+        }
     }
-    private void errorMsg2 (){
-        Toast.makeText(getApplicationContext(),"Inserire i dati prima di proseguire",Toast.LENGTH_LONG).show();
-        Tools.trueSearch = false;
+
+    private Boolean checkLists(){
+        if (Utils.arrayClassUtil != null){
+            if (Utils.arrayClassUtil.Province != null &&
+                    Utils.arrayClassUtil.Comuni != null &&
+                    Utils.arrayClassUtil.strade != null &&
+                    Utils.arrayClassUtil.civici != null ) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     private void fetchProv() {
@@ -145,9 +180,10 @@ public class MainActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.GET, url,onNumLoaded,onError);
         requestQueue.add(request);
     }
-    private void fetchInfo(String url){
+    private boolean fetchInfo(String url){
         StringRequest request = new StringRequest(Request.Method.GET, url,onPostLoaded,onError);
         requestQueue.add(request);
+        return true;
     }
 
     private final Response.Listener<String> onPostsLoaded = new Response.Listener<String>() {
@@ -162,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     private final Response.ErrorListener onError = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
-            Log.e("error_fetch_Activity", error.toString());
+            Log.e(Constants.err_fetch, error.toString());
         }
     };
 
@@ -239,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
     private final Response.Listener<String> onPostLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            Log.i("FETCH", "start");
+            Log.i(Constants.fetching, "start");
             try {
                 //Api forces me to parse like this
                 JSONObject jsonObject = new JSONObject(response);
@@ -249,12 +285,12 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(jsonObject3.optString("Civico"));
 
                 //reflection for all info
-                InfoLine infoLine = gson.fromJson(String.valueOf(jsonArray.get(0)), InfoLine.class);
+                Utils.infoLine = gson.fromJson(String.valueOf(jsonArray.get(0)), InfoLine.class);
 
                 Log.i("Post_Activity", response);
 
-                //intent to result activity
-                getResult(infoLine);
+                getResult(Utils.infoLine);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -274,8 +310,7 @@ public class MainActivity extends AppCompatActivity {
         Utils.comAdapter.clear();
         Utils.comList.clear();
         for (int i = 0; i < Utils.comuni.size(); i++){
-            //    Utils.comList.add(Utils.comuni.get(i).name);
-            Utils.comAdapter.add(Utils.comuni.get(i).name);  //errore -> sto adattando i dati per la UI e non viceversa
+            Utils.comAdapter.add(Utils.comuni.get(i).name);  //error-> adapting data for UI --> wrong
         }
         autocompleteCity.setAdapter(Utils.comAdapter);
     }
@@ -283,8 +318,7 @@ public class MainActivity extends AppCompatActivity {
         Utils.addrAdapter.clear();
         Utils.addrList.clear();
         for (int i = 0; i < Utils.strade.size(); i++){
-            //    Utils.comList.add(Utils.comuni.get(i).name);
-            Utils.addrAdapter.add(Utils.strade.get(i).name);  //errore -> sto adattando i dati per la UI e non viceversa
+            Utils.addrAdapter.add(Utils.strade.get(i).name);  //error-> adapting data for UI --> wrong
         }
         autocompleteAddr.setAdapter(Utils.addrAdapter);
     }
@@ -293,8 +327,7 @@ public class MainActivity extends AppCompatActivity {
         Utils.numAdapter.clear();
         Utils.numList.clear();
         for (int i = 0; i < Utils.civici.size(); i++){
-            //    Utils.comList.add(Utils.comuni.get(i).name);
-            Utils.numAdapter.add(Utils.civici.get(i).civico);  //errore -> sto adattando i dati per la UI e non viceversa
+            Utils.numAdapter.add(Utils.civici.get(i).civico);  //error-> adapting data for UI --> wrong
         }
         autocompleteNum.setAdapter(Utils.numAdapter);
     }
@@ -333,4 +366,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
+    }
 }

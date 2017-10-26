@@ -56,9 +56,10 @@ public class ResultActivity extends AppCompatActivity {
 
         gson = new Gson();
 
-        String shapeLineAsString = getIntent().getStringExtra("shapeLineObj");
+        String shapeLineAsString = getIntent().getStringExtra(Constants.intent_extra);
         if (shapeLineAsString != null) {
             shapeObj = gson.fromJson(shapeLineAsString, InfoLine.class);
+            Utils.infoLine = shapeObj;   //i'm saving in memory in order to return in this activity with back button and restore values
         }
 
         if (shapeObj != null) {
@@ -74,65 +75,65 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void initUI(){
-        if (shapeObj.getVdslStatus().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getVdslStatus().equalsIgnoreCase(Constants.active)){
             vdslView.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getVdslStatus().equalsIgnoreCase("-")){
+        } else if (Utils.infoLine.getVdslStatus().equalsIgnoreCase("-")){
             vdslView.setImageResource(R.drawable.ic_yellow);
         } else {
             vdslView.setImageResource(R.drawable.ic_red);
         }
-        if (shapeObj.getSimm_eth_status().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getSimm_eth_status().equalsIgnoreCase(Constants.active)){
             simmView.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getSimm_eth_status().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getSimm_eth_status().equalsIgnoreCase(Constants.inactive)){
             simmView.setImageResource(R.drawable.ic_red);
         } else {
             simmView.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getNga_vula_Status().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getNga_vula_Status().equalsIgnoreCase(Constants.active)){
             nga_vula_img.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getNga_vula_Status().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getNga_vula_Status().equalsIgnoreCase(Constants.inactive)){
             nga_vula_img.setImageResource(R.drawable.ic_red);
         } else {
             nga_vula_img.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getAsim_atm_status().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getAsim_atm_status().equalsIgnoreCase(Constants.active)){
             asim_atm_img.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getAsim_atm_status().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getAsim_atm_status().equalsIgnoreCase(Constants.inactive)){
             asim_atm_img.setImageResource(R.drawable.ic_red);
         }  else {
             asim_atm_img.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getAsim_eth_Status().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getAsim_eth_Status().equalsIgnoreCase(Constants.active)){
             asim_eth_img.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getAsim_eth_Status().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getAsim_eth_Status().equalsIgnoreCase(Constants.inactive)){
             asim_eth_img.setImageResource(R.drawable.ic_red);
         } else {
             asim_eth_img.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getSimm_atm_status().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getSimm_atm_status().equalsIgnoreCase(Constants.active)){
             simm_atm_imgg.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getAsim_eth_Status().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getAsim_eth_Status().equalsIgnoreCase(Constants.inactive)){
             simm_atm_imgg.setImageResource(R.drawable.ic_red);
         } else {
             simm_atm_imgg.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getUll_Status().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getUll_Status().equalsIgnoreCase(Constants.active)){
             ull_img.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getUll_Status().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getUll_Status().equalsIgnoreCase(Constants.inactive)){
             ull_img.setImageResource(R.drawable.ic_red);
         } else {
             ull_img.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getTerm_eth_fibr().equalsIgnoreCase("Attivo")){
+        if (Utils.infoLine.getTerm_eth_fibr().equalsIgnoreCase(Constants.active)){
             term_eth_fibr_img.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getTerm_eth_fibr().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getTerm_eth_fibr().equalsIgnoreCase(Constants.inactive)){
             term_eth_fibr_img.setImageResource(R.drawable.ic_red);
         } else {
             term_eth_fibr_img.setImageResource(R.drawable.ic_yellow);
         }
-        if (shapeObj.getSlu_status().equalsIgnoreCase("SI")){
+        if (Utils.infoLine.getSlu_status().equalsIgnoreCase("SI")){
             slu_img.setImageResource(R.drawable.ic_green);
-        } else if (shapeObj.getTerm_eth_fibr().equalsIgnoreCase("NO")){
+        } else if (Utils.infoLine.getTerm_eth_fibr().equalsIgnoreCase(Constants.inactive)){
             slu_img.setImageResource(R.drawable.ic_red);
         } else {
             slu_img.setImageResource(R.drawable.ic_yellow);
@@ -144,7 +145,16 @@ public class ResultActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DetailActivity.class);
         Gson gson = new Gson();
         String shapeLineString = gson.toJson(infoLine);
-        intent.putExtra("shapeLine", shapeLineString);
+        intent.putExtra(Constants.intent_extra, shapeLineString);
         startActivity(intent);
     }
+
+
+    //return my view using Utils class by redrawing all the image
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initUI();
+    }
+
 }
