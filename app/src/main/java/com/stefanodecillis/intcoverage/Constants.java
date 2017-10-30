@@ -20,4 +20,11 @@ public class Constants {
     public static final String active = "Attivo";
     public static final String inactive = "NO";
     public static final String URLMAP = "http://marlin.planetel.it/netmap/";
+
+
+
+    //saved view
+
+    public static final String STATE_VIEW = "states";
+    public static final String ID_VIEW = "id_view";
 }
