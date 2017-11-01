@@ -1,6 +1,7 @@
 package com.stefanodecillis.intcoverage;
 
 
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Butterknife is used here
         ButterKnife.bind(this);
-
         initUI();
+
         //init adapters
         Utils.provAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.provList);
         Utils.comAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.comList);
@@ -135,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*
+    a few methods to check null pointer
+     */
+
+
     private Boolean checkAutocompleteTxt(){
         if (autocomplete.getText().toString() != "" &&
                 autocompleteCity.getText().toString() != "" &&
@@ -161,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //methods to fetch data
     private void fetchProv() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URLMAP,onPostsLoaded,onError);
         requestQueue.add(stringRequest);
@@ -183,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //methods for onReponse --> each method pulls different data
     private final Response.Listener<String> onPostsLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
@@ -315,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
         Utils.addrAdapter.clear();
         Utils.addrList.clear();
         for (int i = 0; i < Utils.strade.size(); i++){
-            Utils.addrAdapter.add(Utils.strade.get(i).name);  //error-> adapting data for UI --> wrong
+            Utils.addrAdapter.add(Utils.strade.get(i).name);
         }
         autocompleteAddr.setAdapter(Utils.addrAdapter);
     }
@@ -324,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
         Utils.numAdapter.clear();
         Utils.numList.clear();
         for (int i = 0; i < Utils.civici.size(); i++){
-            Utils.numAdapter.add(Utils.civici.get(i).civico);  //error-> adapting data for UI --> wrong
+            Utils.numAdapter.add(Utils.civici.get(i).civico);
         }
         autocompleteNum.setAdapter(Utils.numAdapter);
     }
@@ -363,9 +371,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-
-    }
 }

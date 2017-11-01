@@ -22,9 +22,21 @@ public class Constants {
     public static final String URLMAP = "http://marlin.planetel.it/netmap/";
 
 
+    //connections
+    public static final String NGA_VULA= "COPERTURA BITSTREAM NGA VULA FTTCab";
+    public static final String VDSL_NGA_VULA= "COPERTURA EVDSL BITSTREAM NGA VULA FTTCab";
+    public static final String ASIM_ATM= "COPERTURA BITSTREAM ASIM ATM";
+    public static final String ASIM_ETH= "COPERTURA BITSTREAM ASIM ETHERNET";
+    public static final String SIMM_ATM= "COPERTURA BITSTREAM SIMM ATM (2M,4M,6M,8M)";
+    public static final String SIMM_ETH= "COPERTURA BITSTREAM SIMM ETHERNET";
+    public static final String ULL = "COPERTURA ULL";
+    public static final String SLU = "COPERTURA SLU";
+    public static final String TERM_ETH_FIBRA = "COPERTURA CIRCUITI TERM ETHERNET FIBRA OTTICA";
+    public static final String WLR_STATUS = "COPERTURA WLR";
+
 
     //saved view
-
+    public static final String JSON_RESULT = "json_result_savedInstance";
     public static final String STATE_VIEW = "states";
     public static final String ID_VIEW = "id_view";
 }

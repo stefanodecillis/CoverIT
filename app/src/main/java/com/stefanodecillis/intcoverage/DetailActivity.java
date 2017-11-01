@@ -1,13 +1,11 @@
 package com.stefanodecillis.intcoverage;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +31,16 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.asim_atm_12dbDwtxt) TextView asim12db_dwTxt = null;
     @BindView(R.id.asim_atm_12dbUptxt) TextView asim12db_upTxT = null;
     @BindView(R.id.asim_atm_distTxt) TextView asim_dist = null;
-
+    @BindView(R.id.my_toolbar)
+    android.support.v7.widget.Toolbar myToolbar = null;
+    @BindView(R.id.asim_eth_StatusTxt) TextView asim_status = null;
+    @BindView(R.id.asim_eth_6dbDwTxt) TextView asim6db_eth_dwTxt = null;
+    @BindView(R.id.asim_eth_6dbUptxt) TextView asim6db_eth_upTxt = null;
+    @BindView(R.id.asim_eth_11dbDwTxt) TextView asim11db_eth_dwTxt = null;
+    @BindView(R.id.asim_eth_11dbUpTxt) TextView asim11db_eth_upTxT = null;
+    @BindView(R.id.asim_eth_12dbDwtxt) TextView asim12db_eth_dwTxt = null;
+    @BindView(R.id.asim_eth_12dbUptxt) TextView asim12db_eth_upTxT = null;
+    @BindView(R.id.asim_eth_distTxt) TextView asim_eth_dist = null;
 
 
 
@@ -49,32 +56,30 @@ public class DetailActivity extends AppCompatActivity {
         //init with butterknife
         ButterKnife.bind(this);
 
+        /*
+        reflection from json to class
+         */
         gson = new Gson();
         String shapeLineAsString = getIntent().getStringExtra(Constants.intent_extra);
-        InfoLine shapeObj = gson.fromJson(shapeLineAsString,InfoLine.class);
+        shapeObj = gson.fromJson(shapeLineAsString,InfoLine.class);
+
+
+        /* setting up toolbar */
+        getSupportToolbar();
 
 
         if (shapeObj != null && shapeLineAsString != null && shapeLineAsString != "") {
-            addressTxt.setText(writeAddress(shapeObj.nameLine()));
-            fttcTxt.setText(shapeObj.getFttc());
-            distCabTxt.setText(shapeObj.getDistCab());
-            adslDwTxt.setText(shapeObj.getSpeedAdsl_down());
-            adslUpTxt.setText(shapeObj.getSpeedAdsl_up());
-            vdslStatusTxt.setText(shapeObj.getVdslStatus());
-            vdslDwTxt.setText(shapeObj.getSpeedVdsl_down());
-            vdslUpTxt.setText(shapeObj.getSpeedVdsl_up());
-            sluStatusTxt.setText(shapeObj.getSlu_status());
-            sluDwTxt.setText(shapeObj.getSluDw());
-            sluUpTxt.setText(shapeObj.getSluUp());
-            asim_atm_statusTxt.setText(shapeObj.getAsim_atm_status());
-            asim6db_dwTxt.setText(shapeObj.getAsim_atm_6db_down());
-            asim6db_upTxt.setText(shapeObj.getAsim_atm_6db_up());
-            asim11db_dwTxt.setText(shapeObj.getAsim_atm_11ddb_down());
-            asim11db_upTxT.setText(shapeObj.getAsim_atm_11db_up());
-            asim12db_dwTxt.setText(shapeObj.getAsim_atm_12db_down());
-            asim12db_upTxT.setText(shapeObj.getAsim_atm_12db_up());
-            asim_dist.setText(shapeObj.getDist_asim_atm());
+            iniUI();
         }
+
+        //backButton on toolbar clicked
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
     }
 
@@ -85,5 +90,42 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             return address;
         }
+    }
+
+    private void iniUI(){
+        addressTxt.setText(writeAddress(shapeObj.nameLine()));
+        fttcTxt.setText(shapeObj.getFttc());
+        distCabTxt.setText(shapeObj.getDistCab());
+        adslDwTxt.setText(shapeObj.getSpeedAdsl_down());
+        adslUpTxt.setText(shapeObj.getSpeedAdsl_up());
+        vdslStatusTxt.setText(shapeObj.getVdslStatus());
+        vdslDwTxt.setText(shapeObj.getSpeedVdsl_down());
+        vdslUpTxt.setText(shapeObj.getSpeedVdsl_up());
+        sluStatusTxt.setText(shapeObj.getSlu_status());
+        sluDwTxt.setText(shapeObj.getSluDw());
+        sluUpTxt.setText(shapeObj.getSluUp());
+        asim_atm_statusTxt.setText(shapeObj.getAsim_atm_status());
+        asim6db_dwTxt.setText(shapeObj.getAsim_atm_6db_down());
+        asim6db_upTxt.setText(shapeObj.getAsim_atm_6db_up());
+        asim11db_dwTxt.setText(shapeObj.getAsim_atm_11ddb_down());
+        asim11db_upTxT.setText(shapeObj.getAsim_atm_11db_up());
+        asim12db_dwTxt.setText(shapeObj.getAsim_atm_12db_down());
+        asim12db_upTxT.setText(shapeObj.getAsim_atm_12db_up());
+        asim_dist.setText(shapeObj.getDist_asim_atm());
+        asim_status.setText(shapeObj.getAsim_eth_Status());
+        asim6db_eth_dwTxt.setText(shapeObj.getAsim_eth_6db_down());
+        asim6db_eth_upTxt.setText(shapeObj.getAsim_eth_6db_up());
+        asim11db_eth_dwTxt.setText(shapeObj.getAsim_eth_11ddb_down());
+        asim11db_eth_upTxT.setText(shapeObj.getAsim_eth_11db_up());
+        asim12db_eth_dwTxt.setText(shapeObj.getAsim_eth_12db_down());
+        asim12db_eth_upTxT.setText(shapeObj.getAsim_eth_12db_up());
+        asim_eth_dist.setText(shapeObj.getDist_asim_eth());
+    }
+
+    private void getSupportToolbar(){
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 }

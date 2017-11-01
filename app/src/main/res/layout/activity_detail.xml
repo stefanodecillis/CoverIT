@@ -4,12 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e0e0e0"
     tools:context="com.stefanodecillis.intcoverage.DetailActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#28b5f4"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -151,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
-                    android:text= "00"
+                    android:text="00"
                     android:textAlignment="textEnd" />
             </TableRow>
 
@@ -497,6 +514,205 @@
 
                 <TextView
                     android:id="@+id/asim_atm_distTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="copertura_bitstream_asim_eth"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_StatusTxt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="yes/no"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_6dbDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="asim_eth6db_speed_down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_6dbDwTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_6dbUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="asim_eth_6db_speed_up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_6dbUptxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_11dbDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="asim_eth_11db_speed_down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_11dbDwTxt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_11dbUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="asim_eth_11db_speed_up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_11dbUpTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_12dbDw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="asim_eth_12db_speed_down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_12dbDwtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="@string/_00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_12dbUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="asim_eth_12db_speed_up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_12dbUptxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/asim_eth_dist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="distance_from_asim_eth"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/asim_eth_distTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"

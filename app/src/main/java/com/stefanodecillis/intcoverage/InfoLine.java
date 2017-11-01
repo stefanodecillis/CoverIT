@@ -96,6 +96,82 @@ public class InfoLine {
     @SerializedName("DISTANZA_BITSTREAM_ASIM_ATM")
     private String dist_asim_atm;
 
+    @SerializedName("COPERTURA_BITSTREAM_SIMM_ATM_1M_1-6M_4M_Bonding")
+    private String simm_atm_bonding_status;
+
+    @SerializedName("COPERTURA_WLR")
+    private String wlr_status;
+
+    @SerializedName("VELOCITA_DOWN_6dB_BITSTREAM_ASIM_ETHERNET")
+    private String asim_eth_6db_down;
+
+    @SerializedName("VELOCITA_UP_6dB_BITSTREAM_ASIM_ETHERNET")
+    private String asim_eth_6db_up;
+
+    @SerializedName("VELOCITA_DOWN_11dB_BITSTREAM_ASIM_ETHERNET")
+    private String asim_eth_11ddb_down;
+
+    @SerializedName("VELOCITA_UP_11dB_BITSTREAM_ASIM_ETHERNET")
+    private String asim_eth_11db_up;
+
+    @SerializedName("DISTANZA_BITSTREAM_ASIM_ETHERNET")
+    private String dist_asim_eth;
+
+
+    public String getSimm_atm_bonding_status() {
+        return simm_atm_bonding_status;
+    }
+
+
+
+    public String getWlr_status() {
+        return wlr_status;
+    }
+
+
+
+    public String getAsim_eth_6db_down() {
+        return asim_eth_6db_down;
+    }
+
+
+
+    public String getAsim_eth_6db_up() {
+        return asim_eth_6db_up;
+    }
+
+
+
+    public String getAsim_eth_11ddb_down() {
+        return asim_eth_11ddb_down;
+    }
+
+
+
+    public String getAsim_eth_11db_up() {
+        return asim_eth_11db_up;
+    }
+
+
+
+    public String getAsim_eth_12db_down() {
+        return speedAdsl_down;
+    }
+
+
+
+    public String getAsim_eth_12db_up() {
+        return speedAdsl_up;
+    }
+
+
+
+    public String getDist_asim_eth() {
+        return dist_asim_eth;
+    }
+
+
+
 
     public String getAsim_atm_6db_down() {
         return asim_atm_6db_down;

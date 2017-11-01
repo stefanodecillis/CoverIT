@@ -132,22 +132,23 @@
         android:layout_marginRight="36dp"
         android:layout_marginTop="66dp"
         app:layout_constraintTop_toBottomOf="@+id/view5">
-    <com.github.jorgecastilloprz.FABProgressCircle
-        android:id="@+id/fabProgressCircle"
-        android:layout_width="77dp"
-        android:layout_height="80dp"
-        app:reusable="true"
-        app:finalIcon="@drawable/ic_done"
-        app:arcColor="@color/fab_orange_light">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/findBtn"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:text="Button"
-            app:backgroundTint="#81c784"
-            app:borderWidth="0dp"
-            app:srcCompat="@android:drawable/ic_menu_search" />
-    </com.github.jorgecastilloprz.FABProgressCircle>
+        <com.github.jorgecastilloprz.FABProgressCircle
+            android:id="@+id/fabProgressCircle"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:arcColor="@color/fab_orange_light"
+            app:finalIcon="@drawable/ic_done"
+            app:reusable="true">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/findBtn"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:text="Button"
+                app:backgroundTint="#81c784"
+                app:borderWidth="0dp"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+        </com.github.jorgecastilloprz.FABProgressCircle>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
