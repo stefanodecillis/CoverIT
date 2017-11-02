@@ -142,27 +142,21 @@ public class InfoLine {
     public String getFibra_eth_fascia() {
         return fibra_eth_fascia;
     }
-
     public String getEdr() {
         return edr;
     }
-
     public String getEdr_type() {
         return edr_type;
     }
-
     public String getUll_adsl2_down() {
         return ull_adsl2_down;
     }
-
     public String getUll_adsl2_up() {
         return ull_adsl2_up;
     }
-
     public String getUll_vdsl_down() {
         return ull_vdsl_down;
     }
-
     public String getUll_vdsl_up() {
         return ull_vdsl_up;
     }

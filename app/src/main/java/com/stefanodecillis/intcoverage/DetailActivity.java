@@ -13,7 +13,12 @@ import butterknife.ButterKnife;
 public class DetailActivity extends AppCompatActivity {
 
     /*
-    API forces me to write this bindings
+    *  API forces me to write this bindings
+    *
+    *
+    * probably I could use listview with adapter --> I should write each line with new strings --> same code
+    *
+    *
      */
     @BindView(R.id.addressTxt) TextView addressTxt = null;
     @BindView(R.id.fttcTxt) TextView fttcTxt = null;
