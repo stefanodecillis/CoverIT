@@ -22,11 +22,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.0">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -713,6 +715,306 @@
 
                 <TextView
                     android:id="@+id/asim_eth_distTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/simm_atm_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="SIMM ATM (2M,4M,6M,8M)"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/simm_atm_statusTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/simm_eth_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="SIMM ETHERNET"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/simm_ethTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/ull_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="Copertura ULL"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/ull_statusTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/ull__adsl_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="ULL ADSL2+ down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/ull_adsl_downTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/ull_adsl_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="ULL ADSL2+ up"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/ull_adsl_upTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/ull_vdsl_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="ULL VDSL down"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/ull_vdsl_downTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+            <TextView
+                android:id="@+id/ull_vdsl_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="ULL VDSL up"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="-1dp" />
+
+
+            <TextView
+                android:id="@+id/ull_vdsl_upTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="00"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/wlr_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="COPERTURA WLR"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/wlr_statusTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/fibra_eth_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="circuiti term eth fibra ottica"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/fibra_eth_statusTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/fibra_eth_fascia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="fascia circuiti fibra ottica"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/fibra_eth_fasciaTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/edr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="EDR"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/edrTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/edr_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:text="TIPO EDR"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/edr_typeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="2"

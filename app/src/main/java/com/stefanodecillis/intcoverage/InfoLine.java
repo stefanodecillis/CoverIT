@@ -117,90 +117,103 @@ public class InfoLine {
     @SerializedName("DISTANZA_BITSTREAM_ASIM_ETHERNET")
     private String dist_asim_eth;
 
+    @SerializedName("VELOCITA_DOWN_ULL_ADSL2+")
+    private String ull_adsl2_down;
 
+    @SerializedName("VELOCITA_UP_ULL_ADSL2+")
+    private String ull_adsl2_up;
+
+    @SerializedName("VELOCITA_DOWN_ULL_VDSL")
+    private String ull_vdsl_down;
+
+    @SerializedName("VELOCITA_UP_ULL_VDSL")
+    private String ull_vdsl_up;
+
+    @SerializedName("FASCIA_CIRCUITI_TERM_ETH_FIBRA_OTTICA")
+    private String fibra_eth_fascia;
+
+   @SerializedName("EDR_CIRCUITI_TERM_ETH_FIBRA_OTTICA")
+   private String edr;
+
+   @SerializedName("TIPO_EDR_CIRCUITI_TERM_ETH_FIBRA_OTTICA")
+   private String edr_type;
+
+
+    public String getFibra_eth_fascia() {
+        return fibra_eth_fascia;
+    }
+
+    public String getEdr() {
+        return edr;
+    }
+
+    public String getEdr_type() {
+        return edr_type;
+    }
+
+    public String getUll_adsl2_down() {
+        return ull_adsl2_down;
+    }
+
+    public String getUll_adsl2_up() {
+        return ull_adsl2_up;
+    }
+
+    public String getUll_vdsl_down() {
+        return ull_vdsl_down;
+    }
+
+    public String getUll_vdsl_up() {
+        return ull_vdsl_up;
+    }
     public String getSimm_atm_bonding_status() {
         return simm_atm_bonding_status;
     }
-
-
-
     public String getWlr_status() {
         return wlr_status;
     }
-
-
-
     public String getAsim_eth_6db_down() {
         return asim_eth_6db_down;
     }
-
-
-
     public String getAsim_eth_6db_up() {
         return asim_eth_6db_up;
     }
-
-
-
     public String getAsim_eth_11ddb_down() {
         return asim_eth_11ddb_down;
     }
-
-
-
     public String getAsim_eth_11db_up() {
         return asim_eth_11db_up;
     }
-
-
-
     public String getAsim_eth_12db_down() {
         return speedAdsl_down;
     }
-
-
-
     public String getAsim_eth_12db_up() {
         return speedAdsl_up;
     }
-
-
-
     public String getDist_asim_eth() {
         return dist_asim_eth;
     }
-
-
-
-
     public String getAsim_atm_6db_down() {
         return asim_atm_6db_down;
     }
-
     public String getAsim_atm_6db_up() {
         return asim_atm_6db_up;
     }
-
     public String getAsim_atm_11ddb_down() {
         return asim_atm_11ddb_down;
     }
-
     public String getAsim_atm_11db_up() {
         return asim_atm_11db_up;
     }
-
     public String getAsim_atm_12db_down() {
         return asim_atm_12db_down;
     }
-
     public String getAsim_atm_12db_up() {
         return asim_atm_12db_up;
     }
-
     public String getDist_asim_atm() {
         return dist_asim_atm;
     }
-
     public String getSlu_status() {
         return slu_status;
     }

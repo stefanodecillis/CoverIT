@@ -12,6 +12,9 @@ import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity {
 
+    /*
+    API forces me to write this bindings
+     */
     @BindView(R.id.addressTxt) TextView addressTxt = null;
     @BindView(R.id.fttcTxt) TextView fttcTxt = null;
     @BindView(R.id.distCabTxt) TextView distCabTxt = null;
@@ -41,8 +44,18 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.asim_eth_12dbDwtxt) TextView asim12db_eth_dwTxt = null;
     @BindView(R.id.asim_eth_12dbUptxt) TextView asim12db_eth_upTxT = null;
     @BindView(R.id.asim_eth_distTxt) TextView asim_eth_dist = null;
-
-
+    @BindView(R.id.simm_ethTxt) TextView simm_eth = null;
+    @BindView(R.id.simm_atm_statusTxt) TextView simm_atm_status = null;
+    @BindView(R.id.ull_statusTxt) TextView ull_status = null;
+    @BindView(R.id.ull_adsl_downTxt) TextView ull_adsl_down = null;
+    @BindView(R.id.ull_adsl_upTxt) TextView ull_adsl_up = null;
+    @BindView(R.id.ull_vdsl_downTxt) TextView ull_vdsl_down = null;
+    @BindView(R.id.ull_vdsl_upTxt) TextView ull_vdsl_up = null;
+    @BindView(R.id.wlr_statusTxt) TextView wlr_status = null;
+    @BindView(R.id.fibra_eth_statusTxt) TextView fibra_eth = null;
+    @BindView(R.id.fibra_eth_fasciaTxt) TextView fibra_fascia = null;
+    @BindView(R.id.edrTxt) TextView edr = null;
+    @BindView(R.id.edr_typeTxt) TextView edr_type = null;
 
 
     private InfoLine shapeObj;
@@ -120,6 +133,18 @@ public class DetailActivity extends AppCompatActivity {
         asim12db_eth_dwTxt.setText(shapeObj.getAsim_eth_12db_down());
         asim12db_eth_upTxT.setText(shapeObj.getAsim_eth_12db_up());
         asim_eth_dist.setText(shapeObj.getDist_asim_eth());
+        simm_atm_status.setText(shapeObj.getSimm_atm_status());
+        simm_eth.setText(shapeObj.getSimm_eth_status());
+        ull_status.setText(shapeObj.getUll_Status());
+        ull_adsl_down.setText(shapeObj.getUll_adsl2_down());
+        ull_adsl_up.setText(shapeObj.getUll_adsl2_up());
+        ull_vdsl_down.setText(shapeObj.getUll_vdsl_down());
+        ull_vdsl_up.setText(shapeObj.getUll_vdsl_up());
+        wlr_status.setText(shapeObj.getWlr_status());
+        fibra_eth.setText(shapeObj.getTerm_eth_fibr());
+        fibra_fascia.setText(shapeObj.getFibra_eth_fascia());
+        edr.setText(shapeObj.getEdr());
+        edr_type.setText(shapeObj.getEdr_type());
     }
 
     private void getSupportToolbar(){
