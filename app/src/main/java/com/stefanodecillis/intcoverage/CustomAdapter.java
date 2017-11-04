@@ -18,27 +18,44 @@ public class CustomAdapter extends ArrayAdapter<ListItem> {
 
     private List<ListItem> objects;
 
+    static class ViewHolder {
+        TextView title;
+        ImageView image;
+    }
+
     public CustomAdapter(Context context, int textViewResourceId,
                          List<ListItem> objects) {
         super(context, textViewResourceId, objects);
         this.objects = objects;
     }
 
+    //https://stackoverflow.com/questions/22000208/android-custom-adapter-with-viewholder-oncheckedchangedlistener-and-textchange
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) getContext()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.listitem, null);
-        TextView title = (TextView)convertView.findViewById(R.id.title);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.list_image);
-        ListItem c = getItem(position);
-        title.setText(c.getTitle());
-        if (c.getDescription().equalsIgnoreCase(Constants.active) || c.getDescription().equalsIgnoreCase("SI")){
-            imageView.setImageResource(R.drawable.ic_green);
-        } else if (c.getDescription().equalsIgnoreCase(Constants.inactive)){
-            imageView.setImageResource(R.drawable.ic_red);
+        ViewHolder holder = null;
+
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) getContext()
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.listitem, null);
+            holder = new ViewHolder();
+            holder.title = (TextView) convertView.findViewById(R.id.title);
+            holder.image = (ImageView) convertView.findViewById(R.id.list_image);
+
+            convertView.setTag(holder);
         } else {
-            imageView.setImageResource(R.drawable.ic_yellow);
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+
+        ListItem c = getItem(position);
+        holder.title.setText(c.getTitle());
+        if (c.getDescription().equalsIgnoreCase(Constants.active) || c.getDescription().equalsIgnoreCase("SI")){
+            holder.image.setImageResource(R.drawable.ic_green);
+        } else if (c.getDescription().equalsIgnoreCase(Constants.inactive)){
+            holder.image.setImageResource(R.drawable.ic_red);
+        } else {
+            holder.image.setImageResource(R.drawable.ic_yellow);
         }
         return convertView;
     }
