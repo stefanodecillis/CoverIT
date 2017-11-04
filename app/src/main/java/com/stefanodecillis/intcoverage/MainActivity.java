@@ -1,11 +1,13 @@
 package com.stefanodecillis.intcoverage;
 
 
-import android.app.TaskStackBuilder;
+
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -43,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
     AutoCompleteTextView autocompleteAddr = null;
     @BindView(R.id.autocompleteNum)
     AutoCompleteTextView autocompleteNum = null;
-    @BindView(R.id.fabProgressCircle)
-    FABProgressCircle fabProgressCircle = null;
 
     private Gson gson;
     private RequestQueue requestQueue;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,17 +81,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
 
+        autocompleteNum.setEnabled(false);
+        autocompleteAddr.setEnabled(false);
+        autocompleteCity.setEnabled(false);
+        findBtn.setEnabled(false);
+
+        //color button
+        PorterDuffColorFilter redFilter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+        findBtn.getBackground().setColorFilter(redFilter);
+
         //items on autocompleteTextView clicked
         autocomplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage("Aggiorno comuni..");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 onProvClicked(adapter,view,pos,id);
             }
         });
 
+
         autocompleteCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage("Aggiorno indirizzi..");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 onComClicked(adapter,view,pos,id);
             }
         });
@@ -99,7 +119,16 @@ public class MainActivity extends AppCompatActivity {
         autocompleteAddr.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage("Aggiorno numeri civici..");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
                 onAddrClicked(adapter,view,pos,id);
+
+                findBtn.setEnabled(true);
+                findBtn.getBackground().setColorFilter(null);
             }
         });
 
@@ -112,11 +141,19 @@ public class MainActivity extends AppCompatActivity {
                     if (Utils.findNumHouse != "" || Utils.findNumHouse != null) {          //check if i'm searching some null value
                         for (int i = 0; i < Utils.civici.size(); i++) {
                             if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)) {
+
+                                progressDialog = new ProgressDialog(MainActivity.this);
+                                progressDialog.setMessage("Scarico i dati richiesti");
+                                progressDialog.setCancelable(false);
+                                progressDialog.show();
+
+                                /* debug */
                                 Log.d(Constants.fetching, "Fetching");
+
+                                //fetching data
                                 fetchInfo(Utils.civici.get(i).url);
                             }
                         }
-                        Toast.makeText(getApplicationContext(), Constants.searching, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
                     }
@@ -133,6 +170,10 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String shapeLineString = gson.toJson(infoLine);
         intent.putExtra(Constants.intent_extra, shapeLineString);
+
+        //finished to fetch data and fill adapter
+        progressDialog.hide();
+
         startActivity(intent);
     }
 
@@ -224,6 +265,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Com_Activity", response);
                 if (Utils.comuni != null)
                     fillComAdapter();
+
+                //finished to fetch data and fill adapter
+                progressDialog.hide();
+                autocompleteCity.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -248,6 +293,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Addr_Activity", response);
                 if (Utils.strade != null)
                     fillAddrAdapter();
+
+                //finished to fetch data and fill adapter
+                progressDialog.hide();
+                autocompleteAddr.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -272,6 +321,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Num_Activity", response);
                 if (Utils.civici != null)
                     fillNumAdapter();
+
+                //finished to fetch data and fill adapter
+                progressDialog.hide();
+                autocompleteNum.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
