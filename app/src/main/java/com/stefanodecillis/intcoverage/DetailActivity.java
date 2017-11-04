@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.stefanodecillis.intcoverage.Entities.InfoLine;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

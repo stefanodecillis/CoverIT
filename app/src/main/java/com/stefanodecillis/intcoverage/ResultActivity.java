@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.stefanodecillis.intcoverage.Entities.InfoLine;
 
 import java.util.LinkedList;
 import java.util.List;

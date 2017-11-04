@@ -1,4 +1,4 @@
-package com.stefanodecillis.intcoverage;
+package com.stefanodecillis.intcoverage.Entities;
 
 import com.google.gson.annotations.SerializedName;
 

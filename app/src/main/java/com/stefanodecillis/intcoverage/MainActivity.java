@@ -22,12 +22,21 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.jorgecastilloprz.FABProgressCircle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.stefanodecillis.intcoverage.Entities.ArrayClassUtil;
+import com.stefanodecillis.intcoverage.Entities.Città;
+import com.stefanodecillis.intcoverage.Entities.Civico;
+import com.stefanodecillis.intcoverage.Entities.InfoLine;
+import com.stefanodecillis.intcoverage.Entities.Provincia;
+import com.stefanodecillis.intcoverage.Entities.Strada;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -49,6 +58,31 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private ProgressDialog progressDialog;
 
+
+    private ArrayClassUtil arrayClassUtil;
+    private InfoLine infoLine;
+
+    private ArrayList<Provincia> province;
+    private ArrayList<Città> comuni;
+    private ArrayList<Strada> strade;
+    private ArrayList<Civico> civici;
+
+
+    private String findCountry = "";
+    private String findCity = "";
+    private String findAddr = "";
+    private String findNumHouse = "";
+
+    private ArrayList<String> provList = new ArrayList<String>();
+    private ArrayList<String> comList = new ArrayList<String>();
+    private ArrayList<String> addrList = new ArrayList<String>();
+    private ArrayList<String> numList = new ArrayList<String>();
+
+    private ArrayAdapter<String> provAdapter;
+    private ArrayAdapter<String> comAdapter;
+    private ArrayAdapter<String> addrAdapter;
+    private ArrayAdapter<String> numAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
         initUI();
 
         //init adapters
-        Utils.provAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.provList);
-        Utils.comAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.comList);
-        Utils.addrAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.addrList);
-        Utils.numAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Utils.numList);
+        provAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, provList);
+        comAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, comList);
+        addrAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, addrList);
+        numAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, numList);
 
         //build gson
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -70,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
         //fetch request
         requestQueue = Volley.newRequestQueue(this);
-        if(Utils.provList.isEmpty() || Utils.provList == null) {
+        if(provList.isEmpty() || provList == null) {
             fetchProv();  //prevent from adding names going back to this view
         } else {
-            autocomplete.setAdapter(Utils.provAdapter);
+            autocomplete.setAdapter(provAdapter);
         }
 
     }
@@ -137,10 +171,10 @@ public class MainActivity extends AppCompatActivity {
         findBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (checkAutocompleteTxt() && checkLists()) {                      //check if i'm using null arrayList
-                    Utils.findNumHouse = autocompleteNum.getText().toString();
-                    if (Utils.findNumHouse != "" || Utils.findNumHouse != null) {          //check if i'm searching some null value
-                        for (int i = 0; i < Utils.civici.size(); i++) {
-                            if (Utils.findNumHouse.equalsIgnoreCase(Utils.civici.get(i).civico)) {
+                    findNumHouse = autocompleteNum.getText().toString();
+                    if (findNumHouse != "" || findNumHouse != null) {          //check if i'm searching some null value
+                        for (int i = 0; i < civici.size(); i++) {
+                            if (findNumHouse.equalsIgnoreCase(civici.get(i).civico)) {
 
                                 progressDialog = new ProgressDialog(MainActivity.this);
                                 progressDialog.setMessage("Scarico i dati richiesti");
@@ -151,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                                 Log.d(Constants.fetching, "Fetching");
 
                                 //fetching data
-                                fetchInfo(Utils.civici.get(i).url);
+                                fetchInfo(civici.get(i).url);
                             }
                         }
                     } else {
@@ -194,11 +228,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Boolean checkLists(){
-        if (Utils.arrayClassUtil != null){
-            if (Utils.arrayClassUtil.Province != null &&
-                    Utils.arrayClassUtil.Comuni != null &&
-                    Utils.arrayClassUtil.strade != null &&
-                    Utils.arrayClassUtil.civici != null ) {
+        if (arrayClassUtil != null){
+            if (arrayClassUtil.Province != null &&
+                    arrayClassUtil.Comuni != null &&
+                    arrayClassUtil.strade != null &&
+                    arrayClassUtil.civici != null ) {
                 return true;
             } else {
                 return false;
@@ -235,8 +269,8 @@ public class MainActivity extends AppCompatActivity {
     private final Response.Listener<String> onPostsLoaded = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
-            Utils.arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
-            Utils.province = Utils.arrayClassUtil.Province;
+            arrayClassUtil = gson.fromJson(response, ArrayClassUtil.class);  //reflection per l'array
+            province = arrayClassUtil.Province;
             fillAdapter();
             Log.i("Prov_Activity", response);
         }
@@ -254,16 +288,16 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
-                for (int i = 0; i < Utils.arrayClassUtil.Province.size(); i++){
-                    if (Utils.findCountry.equalsIgnoreCase(Utils.arrayClassUtil.Province.get(i).name)){
-                        Provincia provincia = Utils.arrayClassUtil.Province.get(i);
+                for (int i = 0; i < arrayClassUtil.Province.size(); i++){
+                    if (findCountry.equalsIgnoreCase(arrayClassUtil.Province.get(i).name)){
+                        Provincia provincia = arrayClassUtil.Province.get(i);
                         provincia = gson.fromJson(String.valueOf(jsonObject1), Provincia.class);
-                        Utils.arrayClassUtil.Comuni = provincia.Comuni;
+                        arrayClassUtil.Comuni = provincia.Comuni;
                     }
                 }
-                Utils.comuni = Utils.arrayClassUtil.Comuni;
+                comuni = arrayClassUtil.Comuni;
                 Log.i("Com_Activity", response);
-                if (Utils.comuni != null)
+                if (comuni != null)
                     fillComAdapter();
 
                 //finished to fetch data and fill adapter
@@ -282,16 +316,16 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
                 JSONObject jsonObject2 = new JSONObject(jsonObject1.optString("Comune"));
-                for (int i = 0; i < Utils.arrayClassUtil.Comuni.size(); i++){
-                    if (Utils.findCity.equalsIgnoreCase(Utils.arrayClassUtil.Comuni.get(i).name)){
-                        Città citta = Utils.arrayClassUtil.Comuni.get(i);
+                for (int i = 0; i < arrayClassUtil.Comuni.size(); i++){
+                    if (findCity.equalsIgnoreCase(arrayClassUtil.Comuni.get(i).name)){
+                        Città citta = arrayClassUtil.Comuni.get(i);
                         citta = gson.fromJson(String.valueOf(jsonObject2), Città.class);
-                        Utils.arrayClassUtil.strade = citta.strade;
+                        arrayClassUtil.strade = citta.strade;
                     }
                 }
-                Utils.strade = Utils.arrayClassUtil.strade;
+                strade = arrayClassUtil.strade;
                 Log.i("Addr_Activity", response);
-                if (Utils.strade != null)
+                if (strade != null)
                     fillAddrAdapter();
 
                 //finished to fetch data and fill adapter
@@ -310,16 +344,16 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(response);
                 JSONObject jsonObject1 = new JSONObject(jsonObject.optString("Provincia"));
                 JSONObject jsonObject2 = new JSONObject(jsonObject1.optString("Comune"));
-                for (int i = 0; i < Utils.arrayClassUtil.Comuni.size(); i++){
-                    if (Utils.findCity.equalsIgnoreCase(Utils.arrayClassUtil.Comuni.get(i).name)){
-                        Città citta = Utils.arrayClassUtil.Comuni.get(i);
+                for (int i = 0; i < arrayClassUtil.Comuni.size(); i++){
+                    if (findCity.equalsIgnoreCase(arrayClassUtil.Comuni.get(i).name)){
+                        Città citta = arrayClassUtil.Comuni.get(i);
                         citta = gson.fromJson(String.valueOf(jsonObject2), Città.class);
-                        Utils.arrayClassUtil.civici = citta.strada.civici;
+                        arrayClassUtil.civici = citta.strada.civici;
                     }
                 }
-                Utils.civici = Utils.arrayClassUtil.civici;
+                civici = arrayClassUtil.civici;
                 Log.i("Num_Activity", response);
-                if (Utils.civici != null)
+                if (civici != null)
                     fillNumAdapter();
 
                 //finished to fetch data and fill adapter
@@ -343,11 +377,11 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(jsonObject3.optString("Civico"));
 
                 //reflection for all info
-                Utils.infoLine = gson.fromJson(String.valueOf(jsonArray.get(0)), InfoLine.class);
+                infoLine = gson.fromJson(String.valueOf(jsonArray.get(0)), InfoLine.class);
 
                 Log.i("Post_Activity", response);
 
-                getResult(Utils.infoLine);
+                getResult(infoLine);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -358,67 +392,67 @@ public class MainActivity extends AppCompatActivity {
 
    //filling adapters
     private void fillAdapter() {
-        for (int i = 0; i < Utils.province.size(); i++){
-            Utils.provList.add(Utils.province.get(i).name);
+        for (int i = 0; i < province.size(); i++){
+            provList.add(province.get(i).name);
         }
-        autocomplete.setAdapter(Utils.provAdapter);
+        autocomplete.setAdapter(provAdapter);
     }
 
     private void fillComAdapter(){
-        Utils.comAdapter.clear();
-        Utils.comList.clear();
-        for (int i = 0; i < Utils.comuni.size(); i++){
-            Utils.comAdapter.add(Utils.comuni.get(i).name);  //error-> adapting data for UI --> wrong
+        comAdapter.clear();
+        comList.clear();
+        for (int i = 0; i < comuni.size(); i++){
+            comAdapter.add(comuni.get(i).name);  //error-> adapting data for UI --> wrong
         }
-        autocompleteCity.setAdapter(Utils.comAdapter);
+        autocompleteCity.setAdapter(comAdapter);
     }
     private void fillAddrAdapter(){
-        Utils.addrAdapter.clear();
-        Utils.addrList.clear();
-        for (int i = 0; i < Utils.strade.size(); i++){
-            Utils.addrAdapter.add(Utils.strade.get(i).name);
+        addrAdapter.clear();
+        addrList.clear();
+        for (int i = 0; i < strade.size(); i++){
+           addrAdapter.add(strade.get(i).name);
         }
-        autocompleteAddr.setAdapter(Utils.addrAdapter);
+        autocompleteAddr.setAdapter(addrAdapter);
     }
 
     private void fillNumAdapter(){
-        Utils.numAdapter.clear();
-        Utils.numList.clear();
-        for (int i = 0; i < Utils.civici.size(); i++){
-            Utils.numAdapter.add(Utils.civici.get(i).civico);
+        numAdapter.clear();
+        numList.clear();
+        for (int i = 0; i < civici.size(); i++){
+            numAdapter.add(civici.get(i).civico);
         }
-        autocompleteNum.setAdapter(Utils.numAdapter);
+        autocompleteNum.setAdapter(numAdapter);
     }
 
     //on AutocompleteTextView Clicked methods
     private void onProvClicked(AdapterView<?> adapter, View view, int pos,long id) {
-        for (int i = 0; i < Utils.province.size(); i++) {
-            if (autocomplete.getText().toString().equalsIgnoreCase(Utils.province.get(i).name)) {
+        for (int i = 0; i < province.size(); i++) {
+            if (autocomplete.getText().toString().equalsIgnoreCase(province.get(i).name)) {
                 Log.d("PROV_CLICKED", autocomplete.getText().toString());
-                Utils.findCountry = autocomplete.getText().toString();
-                fetchCom(Utils.province.get(i).url);
+                findCountry = autocomplete.getText().toString();
+                fetchCom(province.get(i).url);
                 autocompleteCity.setText("");
             }
         }
     }
 
     private void onComClicked(AdapterView<?> adapter, View view, int pos,long id) {
-        for (int i = 0; i < Utils.comuni.size(); i++) {
-            if (autocompleteCity.getText().toString().equalsIgnoreCase(Utils.comuni.get(i).name)) {
+        for (int i = 0; i < comuni.size(); i++) {
+            if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).name)) {
                 Log.d("COM_CLICKED", autocompleteCity.getText().toString());
-                Utils.findCity = autocompleteCity.getText().toString();
-                fetchAddr(Utils.comuni.get(i).url);
+                findCity = autocompleteCity.getText().toString();
+                fetchAddr(comuni.get(i).url);
                 autocompleteAddr.setText("");
             }
         }
     }
 
     private void onAddrClicked(AdapterView<?> adapter, View view, int pos,long id) {
-        for (int i = 0; i < Utils.strade.size(); i++) {
-            if (autocompleteAddr.getText().toString().equalsIgnoreCase(Utils.strade.get(i).name)) {
+        for (int i = 0; i < strade.size(); i++) {
+            if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).name)) {
                 Log.d("ADDR_CLICKED", autocompleteAddr.getText().toString());
-                Utils.findAddr = autocompleteAddr.getText().toString();
-                fetchNum(Utils.strade.get(i).url);
+                findAddr = autocompleteAddr.getText().toString();
+                fetchNum(strade.get(i).url);
                 autocompleteNum.setText("");
             }
         }
