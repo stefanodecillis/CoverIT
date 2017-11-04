@@ -24,4 +24,43 @@ public class Strada {
     @SerializedName("Civico")
     Civico civico;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public ArrayList<Civico> getCivici() {
+        return civici;
+    }
+
+    public void setCivici(ArrayList<Civico> civici) {
+        this.civici = civici;
+    }
+
+    public Civico getCivico() {
+        return civico;
+    }
+
+    public void setCivico(Civico civico) {
+        this.civico = civico;
+    }
 }
