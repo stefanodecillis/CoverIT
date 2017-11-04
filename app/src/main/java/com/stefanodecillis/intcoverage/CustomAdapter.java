@@ -29,7 +29,7 @@ public class CustomAdapter extends ArrayAdapter<ListItem> {
         this.objects = objects;
     }
 
-    //https://stackoverflow.com/questions/22000208/android-custom-adapter-with-viewholder-oncheckedchangedlistener-and-textchange
+    //https://stackoverflow.com/questions/22000208/android-custom-adapter-with-viewholder-oncheckedchangedlistener-and-textchange <---
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
