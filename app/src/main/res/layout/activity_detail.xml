@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_column="1"
-                    android:text="Address"
+                    android:text="Indirizzo"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Distance from Cabinet"
+                    android:text="distanza dal Cabinet"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Est. ADSL speed (down)"
+                    android:text="velocità stim. ADSL (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -160,7 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Est. ADSL speed (up)"
+                    android:text="velocità stim. ADSL (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -210,7 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Est. VDSL speed (down)"
+                    android:text="velocità stim. VDSL (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -235,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Est. VDSL speed (up)"
+                    android:text="velocità stim. VDSL (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -285,7 +285,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Est. SLU speed (down)"
+                    android:text="velocità stim. SLU (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -310,7 +310,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="Est. SLU speed (up)"
+                    android:text="velocità stim. SLU (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -332,7 +332,7 @@
 
                 <TextView
                     android:id="@+id/asim_atm_Status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="@string/copertura_bitstream_asim_atm"
@@ -360,7 +360,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/asim_atm_6db_speed_down"
+                    android:text="asim atm 6db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -385,7 +385,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/asim_atm_6db_speed_up"
+                    android:text="asim atm 6db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -406,10 +406,10 @@
 
                 <TextView
                     android:id="@+id/asim_atm_11dbDw"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/asim_atm_11db_speed_down"
+                    android:text="asim atm 11db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -434,7 +434,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/asim_atm_11db_speed_up"
+                    android:text="asim atm 11db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -456,10 +456,10 @@
 
                 <TextView
                     android:id="@+id/asim_atm_12dbDw"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/asim_atm_12db_speed_down"
+                    android:text="asim atm 12db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -484,7 +484,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/asim_atm_12db_speed_up"
+                    android:text="asim atm 12db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -509,7 +509,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="@string/distance_from_asim_atm"
+                    android:text="distanza dal asim atm (cabinet)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -531,7 +531,7 @@
 
                 <TextView
                     android:id="@+id/asim_eth_Status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="copertura_bitstream_asim_eth"
@@ -559,7 +559,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="asim_eth6db_speed_down"
+                    android:text="asim eth 6db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -584,7 +584,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="asim_eth_6db_speed_up"
+                    android:text="asim eth 6db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -605,10 +605,10 @@
 
                 <TextView
                     android:id="@+id/asim_eth_11dbDw"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="asim_eth_11db_speed_down"
+                    android:text="asim eth 11db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -633,7 +633,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="asim_eth_11db_speed_up"
+                    android:text="asim eth 11db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -655,10 +655,10 @@
 
                 <TextView
                     android:id="@+id/asim_eth_12dbDw"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="asim_eth_12db_speed_down"
+                    android:text="asim eth 12db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -683,7 +683,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="asim_eth_12db_speed_up"
+                    android:text="asim eth 12db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -708,7 +708,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="distance_from_asim_eth"
+                    android:text="distanza asim ethernet"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
@@ -1008,7 +1008,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="TIPO EDR"
+                    android:text="tipo EDR"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 

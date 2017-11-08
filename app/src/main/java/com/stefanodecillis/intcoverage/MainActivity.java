@@ -1,7 +1,6 @@
 package com.stefanodecillis.intcoverage;
 
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -30,13 +29,10 @@ import com.stefanodecillis.intcoverage.Entities.Civico;
 import com.stefanodecillis.intcoverage.Entities.InfoLine;
 import com.stefanodecillis.intcoverage.Entities.Provincia;
 import com.stefanodecillis.intcoverage.Entities.Strada;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -165,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkAutocompleteTxt() && checkLists()) {                      //check if i'm using null arrayList
                     findNumHouse = autocompleteNum.getText().toString();
+                    boolean found = false;
                     if (findNumHouse != "" || findNumHouse != null) {          //check if i'm searching some null value
                         for (int i = 0; i < civici.size(); i++) {
                             if (findNumHouse.equalsIgnoreCase(civici.get(i).getCivico())) {
@@ -174,12 +171,18 @@ public class MainActivity extends AppCompatActivity {
                                 progressDialog.setCancelable(false);
                                 progressDialog.show();
 
+                                //set bool true
+                                found = true;
+
                                 /* debug */
                                 Log.d(Constants.fetching, "Fetching");
 
                                 //fetching data
                                 fetchInfo(civici.get(i).getUrl());
                             }
+                        }
+                        if (found == false) {
+                            Toast.makeText(getApplicationContext(), "Civico non trovato", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();

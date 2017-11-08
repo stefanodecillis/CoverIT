@@ -11,7 +11,9 @@
         android:id="@+id/constraintPLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,11 +31,12 @@
 
         <AutoCompleteTextView
             android:id="@+id/autocomplete"
-            android:layout_width="340dp"
+            android:layout_width="0dp"
             android:layout_height="39dp"
             android:layout_marginTop="8dp"
             android:background="#e0e0e0"
             android:hint="Provincia"
+            android:inputType="textNoSuggestions"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -41,7 +44,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/autocompleteCity"
-            android:layout_width="340dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:background="#e0e0e0"
             android:hint="Città"
@@ -62,11 +65,12 @@
 
         <AutoCompleteTextView
             android:id="@+id/autocompleteNum"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginRight="8dp"
             android:background="#e0e0e0"
             android:hint="Numero Civico"
+            android:inputType="textNoSuggestions"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -84,7 +88,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/autocompleteAddr"
-            android:layout_width="340dp"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:background="#e0e0e0"
             android:hint="Via/piazza/Corso.."
@@ -102,21 +106,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/autocompleteAddr" />
-    </android.support.constraint.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:adjustViewBounds="false"
-        android:background="#73e8ff"
-        android:cropToPadding="false"
-        android:scaleType="fitXY"
-        android:visibility="invisible"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/findBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Button"
+            app:backgroundTint="#81c784"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view5"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/imageView3"
@@ -128,18 +136,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/findBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginTop="64dp"
-        android:text="Button"
-        app:backgroundTint="#81c784"
-        app:borderWidth="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintPLayout"
-        app:srcCompat="@android:drawable/ic_menu_search" />
 
 </android.support.constraint.ConstraintLayout>

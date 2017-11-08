@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">"IntCoverage"</string>
+    <string name="app_name">"CoverIT"</string>
     <string name="defaultValue">"00"</string>
     <string name="ERROR">"error -1</string>
     <string name="SHOWDATA">"Data is:"</string>
