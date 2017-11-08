@@ -10,11 +10,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> comAdapter;
     private ArrayAdapter<String> addrAdapter;
     private ArrayAdapter<String> numAdapter;
+    private Boolean search = false;
+    private Boolean searchAddr = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +128,9 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.setCancelable(false);
                 progressDialog.show();
                 onProvClicked(adapter,view,pos,id);
+
+                autocompleteAddr.setEnabled(true);
+                autocompleteAddr.setClickable(false);
             }
         });
 
@@ -131,11 +139,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int pos,long id) {
                 progressDialog = new ProgressDialog(MainActivity.this);
-                progressDialog.setMessage("Aggiorno indirizzi..");
+                progressDialog.setMessage("Aggiorno indirizzi.. (potrebbe volerci qualche secondo)");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.setCancelable(false);
                 progressDialog.show();
                 onComClicked(adapter,view,pos,id);
+
+                autocompleteNum.setEnabled(true);
             }
         });
 
@@ -155,6 +165,79 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //if someone does not click some items, I need to fetch new data wheh user touches next autocomplete
+        autocompleteAddr.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (autocompleteCity.getText().toString().isEmpty()){
+
+                    /*
+                     * do nothing
+                     */
+                    return true;
+                } else {
+                    autocompleteAddr.setClickable(true);
+                    autocompleteNum.setEnabled(true);
+                    if (searchAddr == false) {
+                        for (int i = 0; i < comuni.size(); i++) {
+                            if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName())) {
+                                Log.d("COM_ADDED", autocompleteCity.getText().toString());
+
+                                progressDialog = new ProgressDialog(MainActivity.this);
+                                progressDialog.setMessage("Aggiorno indirizzi.. (potrebbe volerci qualche secondo)");
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.setCancelable(false);
+                                progressDialog.show();
+
+
+                                findCity = autocompleteCity.getText().toString();
+
+
+                                fetchAddr(comuni.get(i).getUrl());
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+        });
+
+        //if someone does not click some items, I need to fetch new data wheh user touches next autocomplete
+        autocompleteNum.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (autocompleteAddr.getText().toString().isEmpty()){
+
+                    /*
+                     * do nothing
+                     */
+                    return true;
+                } else {
+                    autocompleteNum.setEnabled(true);
+                    if (search == false) {
+                        for (int i = 0; i < strade.size(); i++) {
+                            if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName())) {
+                                Log.d("ADDR_ADDED", autocompleteAddr.getText().toString());
+                                findAddr = autocompleteAddr.getText().toString();
+
+                                progressDialog = new ProgressDialog(MainActivity.this);
+                                progressDialog.setMessage("Aggiorno numeri civici..");
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.setCancelable(false);
+                                progressDialog.show();
+
+                                fetchNum(strade.get(i).getUrl());
+
+                                findBtn.setEnabled(true);
+                                findBtn.getBackground().setColorFilter(null);
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+        });
 
         //floating button clicked
         findBtn.setOnClickListener(new View.OnClickListener() {
@@ -245,14 +328,23 @@ public class MainActivity extends AppCompatActivity {
     }
     private void fetchCom(String url){
         StringRequest request = new StringRequest(Request.Method.GET, url,onCitiesLoaded,onError);
+
+        getRetryPolicy(request);
         requestQueue.add(request);
     }
     private void fetchAddr(String url){
         StringRequest request = new StringRequest(Request.Method.GET, url,onAddrLoaded,onError);
+
+        getRetryPolicy(request);
+        searchAddr = true;
+
         requestQueue.add(request);
     }
     private void fetchNum(String url){
         StringRequest request = new StringRequest(Request.Method.GET, url,onNumLoaded,onError);
+
+        search = true;
+        getRetryPolicy(request);
         requestQueue.add(request);
     }
     private boolean fetchInfo(String url){
@@ -454,4 +546,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void getRetryPolicy(StringRequest request) {
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                8000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    }
 }
