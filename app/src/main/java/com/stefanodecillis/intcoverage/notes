@@ -1,26 +1,7 @@
-android:theme="@style/AppTheme"
 
 
-----------------------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/28648664/android-rendering-problems-nullexception
 
-
-Bugs:
-
-- adapter non si aggiornano dopo la prima volta
-- landscape mode non ottimizzata
-- inesistente callback per la resultActivity  √
-- sistemare button   √
-- premendo invio, autocomplete cancella il testo
-
-
-Possibile ottimizzazione:
-
-- precaricare i dati durante le selezioni
-- avviso - indirizzo non trovato    √
-
-
-
-----------------------------------------------------------------------------------------------------
 
 
 

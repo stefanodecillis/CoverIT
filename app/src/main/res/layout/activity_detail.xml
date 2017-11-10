@@ -57,8 +57,6 @@
 
                 <TextView
                     android:id="@+id/address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     android:layout_column="1"
                     android:text="Indirizzo"
                     tools:layout_editor_absoluteX="155dp"
@@ -67,8 +65,6 @@
 
                 <TextView
                     android:id="@+id/addressTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:layout_column="2"
                     android:textAlignment="textEnd"
                     android:textColor="#FF909090" />
@@ -82,8 +78,6 @@
 
                 <TextView
                     android:id="@+id/fttc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="FTTC"
                     tools:layout_editor_absoluteX="155dp"
@@ -92,8 +86,6 @@
 
                 <TextView
                     android:id="@+id/fttcTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="fttc"
                     android:textAlignment="textEnd" />
@@ -107,8 +99,6 @@
 
                 <TextView
                     android:id="@+id/distCab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="distanza dal Cabinet"
                     tools:layout_editor_absoluteX="155dp"
@@ -117,8 +107,6 @@
 
                 <TextView
                     android:id="@+id/distCabTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="distCab"
                     android:textAlignment="textEnd" />
@@ -132,8 +120,6 @@
 
                 <TextView
                     android:id="@+id/adslDw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="velocità stim. ADSL (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -142,8 +128,6 @@
 
                 <TextView
                     android:id="@+id/adslDwTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="0000"
                     android:textAlignment="textEnd" />
@@ -157,8 +141,6 @@
 
                 <TextView
                     android:id="@+id/adslUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="velocità stim. ADSL (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -167,8 +149,6 @@
 
                 <TextView
                     android:id="@+id/adslUpTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -182,8 +162,6 @@
 
                 <TextView
                     android:id="@+id/vdslStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="VDSL"
                     tools:layout_editor_absoluteX="155dp"
@@ -192,8 +170,6 @@
 
                 <TextView
                     android:id="@+id/vdslStatusTxt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="yes/no"
                     android:textAlignment="textEnd" />
@@ -207,8 +183,6 @@
 
                 <TextView
                     android:id="@+id/vdslDw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="velocità stim. VDSL (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -217,8 +191,6 @@
 
                 <TextView
                     android:id="@+id/vdslDwTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -232,8 +204,6 @@
 
                 <TextView
                     android:id="@+id/vdslUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="velocità stim. VDSL (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -242,8 +212,6 @@
 
                 <TextView
                     android:id="@+id/vdslUpTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -257,8 +225,6 @@
 
                 <TextView
                     android:id="@+id/slulStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="Copertura SLU"
                     tools:layout_editor_absoluteX="155dp"
@@ -267,8 +233,6 @@
 
                 <TextView
                     android:id="@+id/sluStatusTxt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="yes/no"
                     android:textAlignment="textEnd" />
@@ -282,8 +246,6 @@
 
                 <TextView
                     android:id="@+id/sluDw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="velocità stim. SLU (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -292,8 +254,6 @@
 
                 <TextView
                     android:id="@+id/sluDwTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/defaultValue"
                     android:textAlignment="textEnd" />
@@ -307,8 +267,6 @@
 
                 <TextView
                     android:id="@+id/sluUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="velocità stim. SLU (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -317,8 +275,6 @@
 
                 <TextView
                     android:id="@+id/sluUpTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -332,8 +288,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_Status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="@string/copertura_bitstream_asim_atm"
                     tools:layout_editor_absoluteX="155dp"
@@ -342,8 +296,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_StatusTxt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="yes/no"
                     android:textAlignment="textEnd" />
@@ -357,8 +309,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_6dbDw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim atm 6db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -367,8 +317,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_6dbDwTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -382,8 +330,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_6dbUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim atm 6db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -392,8 +338,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_6dbUptxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:textAlignment="textEnd" />
             </TableRow>
@@ -406,8 +350,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_11dbDw"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim atm 11db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -416,8 +358,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_11dbDwTxt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -431,8 +371,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_11dbUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim atm 11db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -441,8 +379,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_11dbUpTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -456,8 +392,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_12dbDw"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim atm 12db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -466,8 +400,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_12dbDwtxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -481,8 +413,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_12dbUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim atm 12db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -491,8 +421,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_12dbUptxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -506,8 +434,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_dist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="distanza dal asim atm (cabinet)"
                     tools:layout_editor_absoluteX="155dp"
@@ -516,8 +442,6 @@
 
                 <TextView
                     android:id="@+id/asim_atm_distTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -531,18 +455,14 @@
 
                 <TextView
                     android:id="@+id/asim_eth_Status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:text="copertura_bitstream_asim_eth"
+                    android:text="copertura bitstream asim eth"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
 
 
                 <TextView
                     android:id="@+id/asim_eth_StatusTxt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="yes/no"
                     android:textAlignment="textEnd" />
@@ -556,8 +476,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_6dbDw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim eth 6db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -566,8 +484,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_6dbDwTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -581,8 +497,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_6dbUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim eth 6db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -591,8 +505,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_6dbUptxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:textAlignment="textEnd" />
             </TableRow>
@@ -605,8 +517,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_11dbDw"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim eth 11db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -615,8 +525,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_11dbDwTxt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -630,8 +538,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_11dbUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim eth 11db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -640,8 +546,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_11dbUpTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -655,8 +559,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_12dbDw"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim eth 12db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
@@ -665,8 +567,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_12dbDwtxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="@string/_00"
                     android:textAlignment="textEnd" />
@@ -680,8 +580,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_12dbUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="asim eth 12db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
@@ -690,8 +588,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_12dbUptxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -705,8 +601,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_dist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="distanza asim ethernet"
                     tools:layout_editor_absoluteX="155dp"
@@ -715,8 +609,6 @@
 
                 <TextView
                     android:id="@+id/asim_eth_distTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -730,8 +622,6 @@
 
                 <TextView
                     android:id="@+id/simm_atm_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="SIMM ATM (2M,4M,6M,8M)"
                     tools:layout_editor_absoluteX="155dp"
@@ -740,8 +630,6 @@
 
                 <TextView
                     android:id="@+id/simm_atm_statusTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -755,8 +643,6 @@
 
                 <TextView
                     android:id="@+id/simm_eth_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="SIMM ETHERNET"
                     tools:layout_editor_absoluteX="155dp"
@@ -765,8 +651,6 @@
 
                 <TextView
                     android:id="@+id/simm_ethTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -780,8 +664,6 @@
 
                 <TextView
                     android:id="@+id/ull_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="Copertura ULL"
                     tools:layout_editor_absoluteX="155dp"
@@ -790,8 +672,6 @@
 
                 <TextView
                     android:id="@+id/ull_statusTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -805,8 +685,6 @@
 
                 <TextView
                     android:id="@+id/ull__adsl_down"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="ULL ADSL2+ down"
                     tools:layout_editor_absoluteX="155dp"
@@ -815,8 +693,6 @@
 
                 <TextView
                     android:id="@+id/ull_adsl_downTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -830,8 +706,6 @@
 
                 <TextView
                     android:id="@+id/ull_adsl_up"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="ULL ADSL2+ up"
                     tools:layout_editor_absoluteX="155dp"
@@ -840,8 +714,6 @@
 
                 <TextView
                     android:id="@+id/ull_adsl_upTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -855,8 +727,6 @@
 
                 <TextView
                     android:id="@+id/ull_vdsl_down"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="ULL VDSL down"
                     tools:layout_editor_absoluteX="155dp"
@@ -865,8 +735,6 @@
 
                 <TextView
                     android:id="@+id/ull_vdsl_downTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -880,8 +748,6 @@
 
             <TextView
                 android:id="@+id/ull_vdsl_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:text="ULL VDSL up"
                 tools:layout_editor_absoluteX="155dp"
@@ -890,8 +756,6 @@
 
             <TextView
                 android:id="@+id/ull_vdsl_upTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:text="00"
                 android:textAlignment="textEnd" />
@@ -905,8 +769,6 @@
 
                 <TextView
                     android:id="@+id/wlr_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="COPERTURA WLR"
                     tools:layout_editor_absoluteX="155dp"
@@ -915,8 +777,6 @@
 
                 <TextView
                     android:id="@+id/wlr_statusTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -930,8 +790,6 @@
 
                 <TextView
                     android:id="@+id/fibra_eth_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="circuiti term eth fibra ottica"
                     tools:layout_editor_absoluteX="155dp"
@@ -940,8 +798,6 @@
 
                 <TextView
                     android:id="@+id/fibra_eth_statusTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -955,8 +811,6 @@
 
                 <TextView
                     android:id="@+id/fibra_eth_fascia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="fascia circuiti fibra ottica"
                     tools:layout_editor_absoluteX="155dp"
@@ -965,8 +819,6 @@
 
                 <TextView
                     android:id="@+id/fibra_eth_fasciaTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -980,8 +832,6 @@
 
                 <TextView
                     android:id="@+id/edr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="EDR"
                     tools:layout_editor_absoluteX="155dp"
@@ -990,8 +840,6 @@
 
                 <TextView
                     android:id="@+id/edrTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />
@@ -1005,8 +853,6 @@
 
                 <TextView
                     android:id="@+id/edr_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:text="tipo EDR"
                     tools:layout_editor_absoluteX="155dp"
@@ -1015,8 +861,6 @@
 
                 <TextView
                     android:id="@+id/edr_typeTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:text="00"
                     android:textAlignment="textEnd" />

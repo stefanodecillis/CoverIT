@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Gson gson;
     private RequestQueue requestQueue;
-    private ProgressDialog progressDialog;
+    private ProgressDialog progressDialog = null;
     private ArrayClassUtil arrayClassUtil;
     private InfoLine infoLine;
     private ArrayList<Provincia> province;
@@ -286,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
 
         //finished to fetch data and fill adapter
         progressDialog.hide();
+        progressDialog.dismiss();
 
         startActivity(intent);
     }
@@ -390,6 +391,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //finished to fetch data and fill adapter
                 progressDialog.hide();
+                progressDialog.dismiss();
                 autocompleteCity.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -418,6 +420,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //finished to fetch data and fill adapter
                 progressDialog.hide();
+                progressDialog.dismiss();
                 autocompleteAddr.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -446,6 +449,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //finished to fetch data and fill adapter
                 progressDialog.hide();
+                progressDialog.dismiss();
                 autocompleteNum.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
