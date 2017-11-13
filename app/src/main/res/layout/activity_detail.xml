@@ -119,6 +119,27 @@
             <TableRow>
 
                 <TextView
+                    android:id="@+id/ftth_status"
+                    android:layout_column="1"
+                    android:text="FTTH"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/ftthTxt"
+                    android:layout_column="2"
+                    android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="2dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
                     android:id="@+id/adslDw"
                     android:layout_column="1"
                     android:text="velocità stim. ADSL (down)"

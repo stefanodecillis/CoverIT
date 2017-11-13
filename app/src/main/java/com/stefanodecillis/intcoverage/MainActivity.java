@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
     private Boolean search = false;
     private Boolean searchAddr = false;
 
+    //bool to click just once findBtn
+    private Boolean findBtnOpen = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -242,36 +245,39 @@ public class MainActivity extends AppCompatActivity {
         //floating button clicked
         findBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (checkAutocompleteTxt() && checkLists()) {                      //check if i'm using null arrayList
-                    findNumHouse = autocompleteNum.getText().toString();
-                    boolean found = false;
-                    if (findNumHouse != "" || findNumHouse != null) {          //check if i'm searching some null value
-                        for (int i = 0; i < civici.size(); i++) {
-                            if (findNumHouse.equalsIgnoreCase(civici.get(i).getCivico())) {
+                if (findBtnOpen == false) {
+                    findBtnOpen = true;
+                    if (checkAutocompleteTxt() && checkLists()) {                      //check if i'm using null arrayList
+                        findNumHouse = autocompleteNum.getText().toString();
+                        boolean found = false;
+                        if (findNumHouse != "" || findNumHouse != null) {          //check if i'm searching some null value
+                            for (int i = 0; i < civici.size(); i++) {
+                                if (findNumHouse.equalsIgnoreCase(civici.get(i).getCivico())) {
 
-                                progressDialog = new ProgressDialog(MainActivity.this);
-                                progressDialog.setMessage("Scarico i dati richiesti");
-                                progressDialog.setCancelable(false);
-                                progressDialog.show();
+                                    progressDialog = new ProgressDialog(MainActivity.this);
+                                    progressDialog.setMessage("Scarico i dati richiesti");
+                                    progressDialog.setCancelable(false);
+                                    progressDialog.show();
 
-                                //set bool true
-                                found = true;
+                                    //set bool true
+                                    found = true;
 
                                 /* debug */
-                                Log.d(Constants.fetching, "Fetching");
+                                    Log.d(Constants.fetching, "Fetching");
 
-                                //fetching data
-                                fetchInfo(civici.get(i).getUrl());
+                                    //fetching data
+                                    fetchInfo(civici.get(i).getUrl());
+                                }
                             }
-                        }
-                        if (found == false) {
-                            Toast.makeText(getApplicationContext(), "Civico non trovato", Toast.LENGTH_SHORT).show();
+                            if (found == false) {
+                                Toast.makeText(getApplicationContext(), "Civico non trovato", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), Constants.err_fields, Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(getApplicationContext(),Constants.err_fields,Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -287,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
         //finished to fetch data and fill adapter
         progressDialog.hide();
         progressDialog.dismiss();
+        findBtnOpen = false;
 
         startActivity(intent);
     }
@@ -350,6 +357,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private boolean fetchInfo(String url){
         StringRequest request = new StringRequest(Request.Method.GET, url,onPostLoaded,onError);
+        getRetryPolicy(request);
         requestQueue.add(request);
         return true;
     }
@@ -368,6 +376,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onErrorResponse(VolleyError error) {
             Log.e(Constants.err_fetch, error.toString());
+            findBtnOpen = false;
         }
     };
 

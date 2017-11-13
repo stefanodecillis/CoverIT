@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,16 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResultActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ResultActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             android:parentActivityName=".MainActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".DetailActivity"
+        <activity
+            android:name=".DetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             android:parentActivityName=".ResultActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
@@ -38,6 +41,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ResultActivity" />
         </activity>
+        <activity
+            android:name=".Dialog"
+            android:label="@string/title_activity_dialog"
+            android:theme="@style/AppTheme.CustomDialogTheme"></activity>
     </application>
 
 </manifest>

@@ -62,6 +62,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.fibra_eth_fasciaTxt) TextView fibra_fascia = null;
     @BindView(R.id.edrTxt) TextView edr = null;
     @BindView(R.id.edr_typeTxt) TextView edr_type = null;
+    @BindView(R.id.ftthTxt) TextView ftth_status = null;
 
 
     private InfoLine shapeObj;
@@ -151,6 +152,7 @@ public class DetailActivity extends AppCompatActivity {
         fibra_fascia.setText(shapeObj.getFibra_eth_fascia());
         edr.setText(shapeObj.getEdr());
         edr_type.setText(shapeObj.getEdr_type());
+        ftth_status.setText(shapeObj.getFtth_status());
     }
 
     private void getSupportToolbar(){

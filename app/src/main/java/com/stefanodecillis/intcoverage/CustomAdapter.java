@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.OnItemClick;
+
 /**
  * Created by stefanodecillis on 30/10/2017.
  */

@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.stefanodecillis.intcoverage.Entities.InfoLine;
@@ -31,6 +35,8 @@ public class ResultActivity extends AppCompatActivity {
     ListView listView = null;
     @BindView(R.id.my_toolbar)
     android.support.v7.widget.Toolbar myToolbar = null;
+    @BindView(R.id.infoBtn)
+    Button infoBtn = null;
 
 
     @Override
@@ -58,6 +64,7 @@ public class ResultActivity extends AppCompatActivity {
        /*
        I'm retrieving data from reflection to set my UI
         */
+
         if (shapeLineAsString != null) {
             object_json = shapeLineAsString;
             shapeObj = gson.fromJson(shapeLineAsString, InfoLine.class);
@@ -67,9 +74,25 @@ public class ResultActivity extends AppCompatActivity {
             initUI(list);
         }
 
+        /*
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adattatore, final View componente, int pos, long id){
+                 ListItem listItem = (ListItem) listView.getAdapter().getItem(pos);
+                Toast.makeText(getApplicationContext(),"Cliccato "  + listItem.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+*/
         moreBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getDetail(shapeObj);
+            }
+        });
+
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ResultActivity.this, Dialog.class));
             }
         });
 
@@ -79,6 +102,7 @@ public class ResultActivity extends AppCompatActivity {
     private void initUI(List<ListItem> list){
         list.add(new ListItem(Constants.SLU,shapeObj.getSlu_status()));
         list.add(new ListItem(Constants.NGA_VULA, shapeObj.getNga_vula_Status()));
+        list.add(new ListItem(Constants.FIBR_FTTH, shapeObj.getFtth_status()));
         list.add(new ListItem(Constants.VDSL_NGA_VULA,shapeObj.getVdslStatus()));
         list.add(new ListItem(Constants.ASIM_ATM,shapeObj.getAsim_atm_status()));
         list.add(new ListItem(Constants.ASIM_ETH,shapeObj.getAsim_eth_Status()));
@@ -121,6 +145,26 @@ public class ResultActivity extends AppCompatActivity {
 
         // call superclass to save any view hierarchy
         super.onSaveInstanceState(outState);
+    }
+
+    /*
+     * method for toolbar
+     */
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+         if (id == R.id.infoBtn) {
+             Toast.makeText(getApplicationContext(), "infoBTN clicked from toolbar", Toast.LENGTH_SHORT).show();
+             return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

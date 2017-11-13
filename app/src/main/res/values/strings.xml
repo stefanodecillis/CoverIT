@@ -12,4 +12,5 @@
     <string name="asim_atm_6db_speed_up">asim atm 6db speed(up)</string>
     <string name="asim_atm_11db_speed_down">asim atm 11db speed(down)</string>
     <string name="copertura_bitstream_asim_atm">Copertura bitstream ASIM ATM</string>
+    <string name="title_activity_dialog">Dialog</string>
 </resources>

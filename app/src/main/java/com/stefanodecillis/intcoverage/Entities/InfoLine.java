@@ -138,7 +138,12 @@ public class InfoLine {
    @SerializedName("TIPO_EDR_CIRCUITI_TERM_ETH_FIBRA_OTTICA")
    private String edr_type;
 
+   @SerializedName("COPERTURA_BITSTREAM_NGA_VULA_FTTH")
+   private String ftth_status;
 
+    public String getFtth_status() {
+        return ftth_status;
+    }
     public String getFibra_eth_fascia() {
         return fibra_eth_fascia;
     }
