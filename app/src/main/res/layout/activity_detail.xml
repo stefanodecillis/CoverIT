@@ -45,10 +45,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <View
-                android:layout_height="2dip"
-                android:background="#FF909090" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -58,6 +54,7 @@
                 <TextView
                     android:id="@+id/address"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="Indirizzo"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -71,7 +68,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -79,6 +76,7 @@
                 <TextView
                     android:id="@+id/fttc"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="FTTC"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -92,7 +90,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -100,6 +98,7 @@
                 <TextView
                     android:id="@+id/distCab"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="distanza dal Cabinet"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -113,7 +112,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -121,6 +120,7 @@
                 <TextView
                     android:id="@+id/ftth_status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="FTTH"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -134,7 +134,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -142,6 +142,7 @@
                 <TextView
                     android:id="@+id/adslDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="velocità stim. ADSL (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -155,7 +156,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -163,6 +164,7 @@
                 <TextView
                     android:id="@+id/adslUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="velocità stim. ADSL (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -176,7 +178,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -184,6 +186,7 @@
                 <TextView
                     android:id="@+id/vdslStatus"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="VDSL"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -197,7 +200,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -205,6 +208,7 @@
                 <TextView
                     android:id="@+id/vdslDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="velocità stim. VDSL (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -218,7 +222,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -226,6 +230,7 @@
                 <TextView
                     android:id="@+id/vdslUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="velocità stim. VDSL (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -239,7 +244,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -247,6 +252,7 @@
                 <TextView
                     android:id="@+id/slulStatus"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="Copertura SLU"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -260,7 +266,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -268,6 +274,7 @@
                 <TextView
                     android:id="@+id/sluDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="velocità stim. SLU (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -281,7 +288,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -289,6 +296,7 @@
                 <TextView
                     android:id="@+id/sluUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="velocità stim. SLU (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -302,7 +310,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -310,6 +318,7 @@
                 <TextView
                     android:id="@+id/asim_atm_Status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="@string/copertura_bitstream_asim_atm"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -323,7 +332,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -331,6 +340,7 @@
                 <TextView
                     android:id="@+id/asim_atm_6dbDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim atm 6db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -344,7 +354,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -352,6 +362,7 @@
                 <TextView
                     android:id="@+id/asim_atm_6dbUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim atm 6db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -364,7 +375,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -372,6 +383,7 @@
                 <TextView
                     android:id="@+id/asim_atm_11dbDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim atm 11db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -385,7 +397,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -393,6 +405,7 @@
                 <TextView
                     android:id="@+id/asim_atm_11dbUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim atm 11db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -406,7 +419,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -414,6 +427,7 @@
                 <TextView
                     android:id="@+id/asim_atm_12dbDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim atm 12db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -427,7 +441,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -435,6 +449,7 @@
                 <TextView
                     android:id="@+id/asim_atm_12dbUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim atm 12db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -448,7 +463,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -456,6 +471,7 @@
                 <TextView
                     android:id="@+id/asim_atm_dist"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="distanza dal asim atm (cabinet)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -469,7 +485,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -477,6 +493,7 @@
                 <TextView
                     android:id="@+id/asim_eth_Status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="copertura bitstream asim eth"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -490,7 +507,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -498,6 +515,7 @@
                 <TextView
                     android:id="@+id/asim_eth_6dbDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim eth 6db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -511,7 +529,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -519,6 +537,7 @@
                 <TextView
                     android:id="@+id/asim_eth_6dbUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim eth 6db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -531,7 +550,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -539,6 +558,7 @@
                 <TextView
                     android:id="@+id/asim_eth_11dbDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim eth 11db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -552,7 +572,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -560,6 +580,7 @@
                 <TextView
                     android:id="@+id/asim_eth_11dbUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim eth 11db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -573,7 +594,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -581,6 +602,7 @@
                 <TextView
                     android:id="@+id/asim_eth_12dbDw"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim eth 12db velocità (down)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -594,7 +616,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -602,6 +624,7 @@
                 <TextView
                     android:id="@+id/asim_eth_12dbUp"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="asim eth 12db velocità (up)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -615,7 +638,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -623,6 +646,7 @@
                 <TextView
                     android:id="@+id/asim_eth_dist"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="distanza asim ethernet"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -636,7 +660,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -644,6 +668,7 @@
                 <TextView
                     android:id="@+id/simm_atm_status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="SIMM ATM (2M,4M,6M,8M)"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -657,7 +682,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -665,6 +690,7 @@
                 <TextView
                     android:id="@+id/simm_eth_status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="SIMM ETHERNET"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -678,7 +704,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -686,6 +712,7 @@
                 <TextView
                     android:id="@+id/ull_status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="Copertura ULL"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -699,7 +726,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -707,6 +734,7 @@
                 <TextView
                     android:id="@+id/ull__adsl_down"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="ULL ADSL2+ down"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -720,7 +748,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -728,6 +756,7 @@
                 <TextView
                     android:id="@+id/ull_adsl_up"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="ULL ADSL2+ up"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -741,7 +770,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -749,6 +778,7 @@
                 <TextView
                     android:id="@+id/ull_vdsl_down"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="ULL VDSL down"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -762,7 +792,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -770,6 +800,7 @@
             <TextView
                 android:id="@+id/ull_vdsl_up"
                 android:layout_column="1"
+                    android:textStyle="bold"
                 android:text="ULL VDSL up"
                 tools:layout_editor_absoluteX="155dp"
                 tools:layout_editor_absoluteY="-1dp" />
@@ -783,7 +814,7 @@
         </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -791,6 +822,7 @@
                 <TextView
                     android:id="@+id/wlr_status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="COPERTURA WLR"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -804,7 +836,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -812,6 +844,7 @@
                 <TextView
                     android:id="@+id/fibra_eth_status"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="circuiti term eth fibra ottica"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -825,7 +858,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -833,6 +866,7 @@
                 <TextView
                     android:id="@+id/fibra_eth_fascia"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="fascia circuiti fibra ottica"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -846,7 +880,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -854,6 +888,7 @@
                 <TextView
                     android:id="@+id/edr"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="EDR"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -867,7 +902,7 @@
             </TableRow>
 
             <View
-                android:layout_height="2dip"
+                android:layout_height="1dip"
                 android:background="#FF909090" />
 
             <TableRow>
@@ -875,6 +910,7 @@
                 <TextView
                     android:id="@+id/edr_type"
                     android:layout_column="1"
+                    android:textStyle="bold"
                     android:text="tipo EDR"
                     tools:layout_editor_absoluteX="155dp"
                     tools:layout_editor_absoluteY="-1dp" />
@@ -886,10 +922,6 @@
                     android:text="00"
                     android:textAlignment="textEnd" />
             </TableRow>
-
-            <View
-                android:layout_height="2dip"
-                android:background="#FF909090" />
 
         </TableLayout>
 

@@ -1,7 +1,9 @@
 package com.stefanodecillis.intcoverage;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -101,6 +103,15 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(Color.parseColor("#0085c1"));
+        }
     }
 
     //problem with table row. This method creates a suitable string for my layout
