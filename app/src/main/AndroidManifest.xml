@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stefanodecillis.intcoverage"
-    android:versionCode="5">
+    package="com.stefanodecillis.intcoverage" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -25,7 +24,7 @@
         <activity
             android:name=".ResultActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:parentActivityName=".MainActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -34,7 +33,7 @@
         </activity>
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:parentActivityName=".ResultActivity" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -44,7 +43,7 @@
         <activity
             android:name=".Dialog"
             android:label="@string/title_activity_dialog"
-            android:theme="@style/AppTheme.CustomDialogTheme"></activity>
+            android:theme="@style/AppTheme.CustomDialogTheme"/>
     </application>
 
 </manifest>

@@ -1,23 +1,20 @@
 package com.stefanodecillis.intcoverage;
 
 import android.app.Activity;
-import android.database.DataSetObserver;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.view.Window;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListAdapter;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -35,10 +32,6 @@ public class Dialog extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dialog);
-
-        //bind UI
-        ButterKnife.bind(this);
 
         /*
         setting display
@@ -49,11 +42,21 @@ public class Dialog extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * .8), (int) (height * .6));
 
-        /*
-         finished setting display
-         */
+        //bind UI
+        View v = LayoutInflater.from(this).inflate(R.layout.activity_dialog, null);
+        ButterKnife.bind(this, v);
+
+        android.app.Dialog d = new android.app.Dialog(this);
+        d.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        d.addContentView(v, new RelativeLayout.LayoutParams((int) (width * .8), (int) (height * .6)));
+        d.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                finish();
+            }
+        });
+        d.show();
 
         // preparing list data
         prepareListData();
@@ -65,6 +68,14 @@ public class Dialog extends Activity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(Color.parseColor("#0085c1"));
+        }
+    }
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();

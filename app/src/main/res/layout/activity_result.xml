@@ -23,13 +23,12 @@
 
         <Button
             android:id="@+id/infoBtn"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="right"
-            android:background="@android:drawable/ic_menu_info_details"
+            android:background="@drawable/ic_info"
             android:backgroundTint="@android:color/transparent"
             android:backgroundTintMode="src_over"
-            app:srcCompat="@android:drawable/ic_dialog_info"
             tools:layout_editor_absoluteX="323dp"
             tools:layout_editor_absoluteY="4dp"
             android:layout_marginRight="10sp"/>
@@ -43,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@android:color/holo_orange_light"
-        android:text="More"
+        android:text="ALTRO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintLeft_toLeftOf="parent"
