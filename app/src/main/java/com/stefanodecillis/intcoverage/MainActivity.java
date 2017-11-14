@@ -132,8 +132,10 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.show();
                 onProvClicked(adapter,view,pos,id);
 
+                search = false;
+                searchAddr = false;
                 autocompleteAddr.setEnabled(true);
-                autocompleteAddr.setClickable(false);
+                //autocompleteAddr.setClickable(false);
             }
         });
 
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.show();
                 onComClicked(adapter,view,pos,id);
 
-                autocompleteNum.setEnabled(true);
+                //autocompleteNum.setEnabled(true);
             }
         });
 
@@ -179,25 +181,33 @@ public class MainActivity extends AppCompatActivity {
                      */
                     return true;
                 } else {
-                    autocompleteAddr.setClickable(true);
-                    autocompleteNum.setEnabled(true);
+
+
                     if (searchAddr == false) {
-                        for (int i = 0; i < comuni.size(); i++) {
-                            if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName())) {
-                                Log.d("COM_ADDED", autocompleteCity.getText().toString());
+                        if (comuni != null) {
+                            for (int i = 0; i < comuni.size(); i++) {
+                                if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName())) {
+                                    Log.d("COM_ADDED", autocompleteCity.getText().toString());
 
-                                progressDialog = new ProgressDialog(MainActivity.this);
-                                progressDialog.setMessage("Aggiorno indirizzi.. (potrebbe volerci qualche secondo)");
-                                progressDialog.setCanceledOnTouchOutside(false);
-                                progressDialog.setCancelable(false);
-                                progressDialog.show();
+                                    progressDialog = new ProgressDialog(MainActivity.this);
+                                    progressDialog.setMessage("Aggiorno indirizzi.. (potrebbe volerci qualche secondo)");
+                                    progressDialog.setCanceledOnTouchOutside(false);
+                                    progressDialog.setCancelable(false);
+                                    progressDialog.show();
+
+                                    autocompleteAddr.setClickable(true);
+                                    autocompleteNum.setEnabled(true);
+
+                                    autocompleteAddr.setText("");
+
+                                    findCity = autocompleteCity.getText().toString();
 
 
-                                findCity = autocompleteCity.getText().toString();
-
-
-                                fetchAddr(comuni.get(i).getUrl());
+                                    fetchAddr(comuni.get(i).getUrl());
+                                }
                             }
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Scegli prima la città desiderata", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -216,25 +226,33 @@ public class MainActivity extends AppCompatActivity {
                      */
                     return true;
                 } else {
+
                     autocompleteNum.setEnabled(true);
+
                     if (search == false) {
-                        for (int i = 0; i < strade.size(); i++) {
-                            if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName())) {
-                                Log.d("ADDR_ADDED", autocompleteAddr.getText().toString());
-                                findAddr = autocompleteAddr.getText().toString();
+                        if(strade != null) {
+                            for (int i = 0; i < strade.size(); i++) {
+                                if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName())) {
+                                    Log.d("ADDR_ADDED", autocompleteAddr.getText().toString());
+                                    findAddr = autocompleteAddr.getText().toString();
 
-                                progressDialog = new ProgressDialog(MainActivity.this);
-                                progressDialog.setMessage("Aggiorno numeri civici..");
-                                progressDialog.setCanceledOnTouchOutside(false);
-                                progressDialog.setCancelable(false);
-                                progressDialog.show();
+                                    progressDialog = new ProgressDialog(MainActivity.this);
+                                    progressDialog.setMessage("Aggiorno numeri civici..");
+                                    progressDialog.setCanceledOnTouchOutside(false);
+                                    progressDialog.setCancelable(false);
+                                    progressDialog.show();
 
-                                fetchNum(strade.get(i).getUrl());
 
-                                findBtn.setEnabled(true);
-                                findBtn.getBackground().setColorFilter(null);
-                                return true;
+                                    fetchNum(strade.get(i).getUrl());
+
+                                    findBtn.setEnabled(true);
+                                    findBtn.getBackground().setColorFilter(null);
+                                    return true;
+                                }
                             }
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Scegli prima l'indirizzo", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -332,6 +350,7 @@ public class MainActivity extends AppCompatActivity {
     //methods to fetch data
     private void fetchProv() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URLMAP,onPostsLoaded,onError);
+        getRetryPolicy(stringRequest);
         requestQueue.add(stringRequest);
     }
     private void fetchCom(String url){
