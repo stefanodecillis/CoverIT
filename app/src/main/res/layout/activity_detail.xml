@@ -96,28 +96,6 @@
             <TableRow>
 
                 <TextView
-                    android:id="@+id/distCab"
-                    android:layout_column="1"
-                    android:textStyle="bold"
-                    android:text="distanza dal Cabinet"
-                    tools:layout_editor_absoluteX="155dp"
-                    tools:layout_editor_absoluteY="-1dp" />
-
-
-                <TextView
-                    android:id="@+id/distCabTxt"
-                    android:layout_column="2"
-                    android:text="distCab"
-                    android:textAlignment="textEnd" />
-            </TableRow>
-
-            <View
-                android:layout_height="1dip"
-                android:background="#FF909090" />
-
-            <TableRow>
-
-                <TextView
                     android:id="@+id/ftth_status"
                     android:layout_column="1"
                     android:textStyle="bold"
@@ -130,6 +108,50 @@
                     android:id="@+id/ftthTxt"
                     android:layout_column="2"
                     android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="1dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/edr_fttc"
+                    android:layout_column="1"
+                    android:textStyle="bold"
+                    android:text="edr FTTC"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/edr_fttcTxt"
+                    android:layout_column="2"
+                    android:text="0000"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="1dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/distCab"
+                    android:layout_column="1"
+                    android:textStyle="bold"
+                    android:text="distanza dal Cabinet"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/distCabTxt"
+                    android:layout_column="2"
+                    android:text="distCab"
                     android:textAlignment="textEnd" />
             </TableRow>
 
@@ -174,6 +196,50 @@
                     android:id="@+id/adslUpTxt"
                     android:layout_column="2"
                     android:text="00"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="1dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/adslFttcDw"
+                    android:layout_column="1"
+                    android:text="velocità nga vula fttc (down)"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/adslFttcDwTxt"
+                    android:layout_column="2"
+                    android:text="0000"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            <View
+                android:layout_height="1dip"
+                android:background="#FF909090" />
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/adslFttcUp"
+                    android:layout_column="1"
+                    android:text="velocità nga vula fttc (up)"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="155dp"
+                    tools:layout_editor_absoluteY="-1dp" />
+
+
+                <TextView
+                    android:id="@+id/adslFttcUpTxt"
+                    android:layout_column="2"
+                    android:text="0000"
                     android:textAlignment="textEnd" />
             </TableRow>
 

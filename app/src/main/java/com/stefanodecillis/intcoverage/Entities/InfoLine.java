@@ -34,7 +34,7 @@ public class InfoLine {
     private String distCab;
 
     @SerializedName("EDR_SLU")
-    private String fttc;
+    private String edr_slu;
 
     @SerializedName("COPERTURA_EVDSL_BITSTREAM_NGA_VULA_FTTCab")
     private String vdslStatus;
@@ -140,6 +140,27 @@ public class InfoLine {
 
    @SerializedName("COPERTURA_BITSTREAM_NGA_VULA_FTTH")
    private String ftth_status;
+
+   @SerializedName("VELOCITA_DOWN_BITSTREAM_NGA_VULA_FTTCab")
+   private String speedFttc_down;
+
+   @SerializedName("VELOCITA_UP_BITSTREAM_NGA_VULA_FTTCab")
+   private String speedFttc_up;
+
+   @SerializedName("EDR_BITSTREAM_NGA_VULA_FTTCab")
+   private String edr_fttc;
+
+    public String getEdr_slu() {
+        return edr_slu;
+    }
+
+    public String getSpeedAdslFttc_down() {
+        return speedFttc_down;
+    }
+
+    public String getSpeedAdslFttc_up() {
+        return speedFttc_up;
+    }
 
     public String getFtth_status() {
         return ftth_status;
@@ -250,10 +271,10 @@ public class InfoLine {
         return speedAdsl_up;
     }
     public String getDistCab() {
-        return distCab;
+        return (distCab + "m");
     }
-    public String getFttc() {
-        return fttc;
+    public String getEdr_fttc() {
+        return edr_fttc;
     }
     public String getVdslStatus() {
         return vdslStatus;

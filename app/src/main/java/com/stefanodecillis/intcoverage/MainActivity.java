@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 search = false;
                 searchAddr = false;
                 autocompleteAddr.setEnabled(true);
+                findBtnOpen = false;
                 //autocompleteAddr.setClickable(false);
             }
         });
@@ -149,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.setCancelable(false);
                 progressDialog.show();
                 onComClicked(adapter,view,pos,id);
+                findBtnOpen = false;
+                searchAddr = false;
+                search = false;
 
                 //autocompleteNum.setEnabled(true);
             }
@@ -167,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
 
                 findBtn.setEnabled(true);
                 findBtn.getBackground().setColorFilter(null);
+                findBtnOpen = false;
+                search = false;
             }
         });
 
@@ -174,11 +180,14 @@ public class MainActivity extends AppCompatActivity {
         autocompleteAddr.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                findBtnOpen = false;
+                search = false;
                 if (autocompleteCity.getText().toString().isEmpty()){
 
                     /*
                      * do nothing
                      */
+
                     return true;
                 } else {
 
@@ -186,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                     if (searchAddr == false) {
                         if (comuni != null) {
                             for (int i = 0; i < comuni.size(); i++) {
-                                if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName())) {
+                                if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName().replaceAll("\\s+$", ""))) { //regex
                                     Log.d("COM_ADDED", autocompleteCity.getText().toString());
 
                                     progressDialog = new ProgressDialog(MainActivity.this);
@@ -201,8 +210,8 @@ public class MainActivity extends AppCompatActivity {
                                     autocompleteAddr.setText("");
 
                                     findCity = autocompleteCity.getText().toString();
-
-
+                                    search = false;
+                                    searchAddr = true;
                                     fetchAddr(comuni.get(i).getUrl());
                                 }
                             }
@@ -219,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         autocompleteNum.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                findBtnOpen = false;
                 if (autocompleteAddr.getText().toString().isEmpty()){
 
                     /*
@@ -232,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                     if (search == false) {
                         if(strade != null) {
                             for (int i = 0; i < strade.size(); i++) {
-                                if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName())) {
+                                if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName().replaceAll("\\s+$", ""))) {
                                     Log.d("ADDR_ADDED", autocompleteAddr.getText().toString());
                                     findAddr = autocompleteAddr.getText().toString();
 
@@ -242,8 +252,9 @@ public class MainActivity extends AppCompatActivity {
                                     progressDialog.setCancelable(false);
                                     progressDialog.show();
 
-
+                                    search = true;
                                     fetchNum(strade.get(i).getUrl());
+
 
                                     findBtn.setEnabled(true);
                                     findBtn.getBackground().setColorFilter(null);
@@ -270,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
                         boolean found = false;
                         if (findNumHouse != "" || findNumHouse != null) {          //check if i'm searching some null value
                             for (int i = 0; i < civici.size(); i++) {
-                                if (findNumHouse.equalsIgnoreCase(civici.get(i).getCivico())) {
+                                if (findNumHouse.equalsIgnoreCase(civici.get(i).getCivico().toString().replaceAll("\\s+$", ""))) {
 
                                     progressDialog = new ProgressDialog(MainActivity.this);
                                     progressDialog.setMessage("Scarico i dati richiesti");
@@ -291,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Civico non trovato", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Some field is missed or not found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Qualche campo è vuoto o non è stato trovato", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), Constants.err_fields, Toast.LENGTH_SHORT).show();
@@ -309,8 +320,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(Constants.intent_extra, shapeLineString);
 
         //finished to fetch data and fill adapter
-        progressDialog.hide();
-        progressDialog.dismiss();
+        if (progressDialog != null) {
+            progressDialog.hide();
+            progressDialog.dismiss();
+        }
         findBtnOpen = false;
 
         startActivity(intent);
@@ -363,14 +376,11 @@ public class MainActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.GET, url,onAddrLoaded,onError);
 
         getRetryPolicy(request);
-        searchAddr = true;
 
         requestQueue.add(request);
     }
     private void fetchNum(String url){
         StringRequest request = new StringRequest(Request.Method.GET, url,onNumLoaded,onError);
-
-        search = true;
         getRetryPolicy(request);
         requestQueue.add(request);
     }
@@ -418,8 +428,10 @@ public class MainActivity extends AppCompatActivity {
                     fillComAdapter();
 
                 //finished to fetch data and fill adapter
-                progressDialog.hide();
-                progressDialog.dismiss();
+                if (progressDialog != null) {
+                    progressDialog.hide();
+                    progressDialog.dismiss();
+                }
                 autocompleteCity.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -447,8 +459,10 @@ public class MainActivity extends AppCompatActivity {
                     fillAddrAdapter();
 
                 //finished to fetch data and fill adapter
-                progressDialog.hide();
-                progressDialog.dismiss();
+                if (progressDialog != null) {
+                    progressDialog.hide();
+                    progressDialog.dismiss();
+                }
                 autocompleteAddr.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -476,8 +490,10 @@ public class MainActivity extends AppCompatActivity {
                     fillNumAdapter();
 
                 //finished to fetch data and fill adapter
-                progressDialog.hide();
-                progressDialog.dismiss();
+                if (progressDialog != null) {
+                    progressDialog.hide();
+                    progressDialog.dismiss();
+                }
                 autocompleteNum.setEnabled(true);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -547,7 +563,7 @@ public class MainActivity extends AppCompatActivity {
     //on AutocompleteTextView Clicked methods
     private void onProvClicked(AdapterView<?> adapter, View view, int pos,long id) {
         for (int i = 0; i < province.size(); i++) {
-            if (autocomplete.getText().toString().equalsIgnoreCase(province.get(i).getName())) {
+            if (autocomplete.getText().toString().equalsIgnoreCase(province.get(i).getName().replaceAll("\\s+$", ""))) {
                 Log.d("PROV_CLICKED", autocomplete.getText().toString());
                 findCountry = autocomplete.getText().toString();
                 fetchCom(province.get(i).getUrl());
@@ -558,7 +574,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onComClicked(AdapterView<?> adapter, View view, int pos,long id) {
         for (int i = 0; i < comuni.size(); i++) {
-            if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName())) {
+            if (autocompleteCity.getText().toString().equalsIgnoreCase(comuni.get(i).getName().replaceAll("\\s+$", ""))) {
                 Log.d("COM_CLICKED", autocompleteCity.getText().toString());
                 findCity = autocompleteCity.getText().toString();
                 fetchAddr(comuni.get(i).getUrl());
@@ -569,7 +585,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onAddrClicked(AdapterView<?> adapter, View view, int pos,long id) {
         for (int i = 0; i < strade.size(); i++) {
-            if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName())) {
+            if (autocompleteAddr.getText().toString().equalsIgnoreCase(strade.get(i).getName().replaceAll("\\s+$", ""))) {
                 Log.d("ADDR_CLICKED", autocompleteAddr.getText().toString());
                 findAddr = autocompleteAddr.getText().toString();
                 fetchNum(strade.get(i).getUrl());

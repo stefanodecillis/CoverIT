@@ -65,7 +65,9 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.edrTxt) TextView edr = null;
     @BindView(R.id.edr_typeTxt) TextView edr_type = null;
     @BindView(R.id.ftthTxt) TextView ftth_status = null;
-
+    @BindView(R.id.edr_fttcTxt) TextView edr_fttc = null;
+    @BindView(R.id.adslFttcDwTxt) TextView adslFttcDw = null;
+    @BindView(R.id.adslFttcUpTxt) TextView adslFttcUp = null;
 
     private InfoLine shapeObj;
     private Gson gson;
@@ -125,7 +127,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void iniUI(){
         addressTxt.setText(writeAddress(shapeObj.nameLine()));
-        fttcTxt.setText(shapeObj.getFttc());
+        fttcTxt.setText(shapeObj.getNga_vula_Status());
         distCabTxt.setText(shapeObj.getDistCab());
         adslDwTxt.setText(shapeObj.getSpeedAdsl_down());
         adslUpTxt.setText(shapeObj.getSpeedAdsl_up());
@@ -164,6 +166,9 @@ public class DetailActivity extends AppCompatActivity {
         edr.setText(shapeObj.getEdr());
         edr_type.setText(shapeObj.getEdr_type());
         ftth_status.setText(shapeObj.getFtth_status());
+        edr_fttc.setText(shapeObj.getEdr_fttc());
+        adslFttcDw.setText(shapeObj.getSpeedAdslFttc_down());
+        adslFttcUp.setText(shapeObj.getSpeedAdslFttc_up());
     }
 
     private void getSupportToolbar(){
