@@ -62,8 +62,4 @@ public class CustomAdapter extends ArrayAdapter<ListItem> {
         return convertView;
     }
 
-    //https://stackoverflow.com/questions/29201557/saving-and-restoring-listview-with-custom-list-adapter
-    public List<ListItem> getList() {
-        return ( List<ListItem>) objects;
-    }
 }

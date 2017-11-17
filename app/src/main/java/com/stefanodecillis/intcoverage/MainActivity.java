@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                 searchAddr = false;
                 autocompleteAddr.setEnabled(true);
                 findBtnOpen = false;
-                //autocompleteAddr.setClickable(false);
             }
         });
 
@@ -153,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
                 findBtnOpen = false;
                 searchAddr = false;
                 search = false;
-
-                //autocompleteNum.setEnabled(true);
             }
         });
 
@@ -526,7 +523,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-   //filling adapters
+    //filling adapters
     private void fillAdapter() {
         for (int i = 0; i < province.size(); i++){
             provList.add(province.get(i).getName());
@@ -546,7 +543,7 @@ public class MainActivity extends AppCompatActivity {
         addrAdapter.clear();
         addrList.clear();
         for (int i = 0; i < strade.size(); i++){
-           addrAdapter.add(strade.get(i).getName());
+            addrAdapter.add(strade.get(i).getName());
         }
         autocompleteAddr.setAdapter(addrAdapter);
     }

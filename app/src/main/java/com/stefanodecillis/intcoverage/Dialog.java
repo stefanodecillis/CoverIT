@@ -1,5 +1,9 @@
 package com.stefanodecillis.intcoverage;
 
+/**
+ * Dialog with exListView
+ */
+
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.graphics.Color;

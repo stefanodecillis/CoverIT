@@ -56,9 +56,9 @@ public class ResultActivity extends AppCompatActivity {
         if(savedInstanceState != null){
             Log.d("Bundle", "restoring instance in onCreate()"); //debug
             shapeLineAsString = savedInstanceState.getString(Constants.JSON_RESULT); //string value from saved instance
-       } else {
+        } else {
             shapeLineAsString = getIntent().getStringExtra(Constants.intent_extra); //first time create view, it got intent
-       }
+        }
 
 
        /*
@@ -74,15 +74,6 @@ public class ResultActivity extends AppCompatActivity {
             initUI(list);
         }
 
-        /*
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adattatore, final View componente, int pos, long id){
-                 ListItem listItem = (ListItem) listView.getAdapter().getItem(pos);
-                Toast.makeText(getApplicationContext(),"Cliccato "  + listItem.getTitle(), Toast.LENGTH_SHORT).show();
-            }
-        });
-*/
         moreBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getDetail(shapeObj);
@@ -167,9 +158,9 @@ public class ResultActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-         if (id == R.id.infoBtn) {
-             Toast.makeText(getApplicationContext(), "infoBTN clicked from toolbar", Toast.LENGTH_SHORT).show();
-             return true;
+        if (id == R.id.infoBtn) {
+            Toast.makeText(getApplicationContext(), "infoBTN clicked from toolbar", Toast.LENGTH_SHORT).show();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

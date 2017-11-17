@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by stefanodecillis on 21/10/2017.
+ *
+ * class for data reflection
  */
 
 public class InfoLine {
